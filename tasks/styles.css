@@ -8,20 +8,52 @@
 }
 
 :root {
-  --primary-bg-color: #eee;
-  --dark-bg-color: #222;
-  --text-color: #1b1d1d;
-  --light-text-color: var(--primary-bg-color);
-  --link-color: rgb(22, 82, 172);
-  --link-hover-color: rgb(125, 164, 224);
+  /* https://coolors.co/3d5a80-98c1d9-e0fbfc-ee6c4d-293241 */
+  --color-bfazzled-blue: #3D5A80;
+  --color-dark-sky-blue: #98C1D9;
+  --color-light-cyan: #E0FBFC;
+  --color-burnt-sienna: #EE6C4D;
+  --color-gunmetal: #293241;
 
+  --primary-color: var(--color-burnt-sienna);
+  --secondary-color: var(--color-bfazzled-blue);
+  --light-color: var(--color-dark-sky-blue);
+
+  --primary-bg-color: white;
+  --dark-bg-color: var(--color-gunmetal);
+
+  --text-color: var(--color-gunmetal);
+  --text-color-light: var(--light-color);
+
+  --link-color: var(--secondary-color);
+  --link-hover-color: var(--primary-color);
+
+  --primary-btn-color: var(--primary-color);
+  --primary-btn-text-color: var(--text-color);
+  --primary-btn-hover-color: var(--secondary-color);
+  --primary-btn-hover-text-color: var(--text-color-light);
+
+  --btn-spacer: 10px 30px;
+
+  --lead-font-size: 4rem;
   --bigger-font-size: 1.2rem;
   --smaller-font-size: 0.8em;
+
+  --text-font-family: Arial, Helvetica, sans-serif;
+  --control-font-family: 'Courier New', Courier, monospace;
 
   --default-padding-x: 15px;
   --default-padding-y: 10px;
   --default-paddings: var(--default-padding-y) var(--default-padding-x);
   --section-padding: 50px;
+
+  --spacer-0: 0;
+  --spacer-1: .5rem;
+  --spacer-2: 1rem;
+  --spacer-3: 2rem;
+  --spacer-4: 4rem;
+
+  --default-trs-time: .3s;
 }
 
 /* common settings */
@@ -30,14 +62,14 @@ html, body {
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--control-font-family);
   font-size: 16px;
   width: 100%;
   position: relative;
 }
 
 .content {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: var(--text-font-family);
   padding: var(--default-paddings);
   font-size: 1rem;
   flex: 1 0 auto;
@@ -46,7 +78,7 @@ body {
 a {
   text-decoration: none;
   color: var(--link-color);
-  transition: all 0.3s;
+  transition: all var(--default-trs-time);
 }
 
 a:hover {
@@ -71,6 +103,9 @@ header {
   background-color: var(--primary-bg-color);
   font-size: var(--bigger-font-size);
   padding: var(--default-padding-y);
+  position: sticky;
+  top: 0;
+  z-index: 9999;
 }
 
 .top-line {
@@ -120,7 +155,7 @@ header {
   padding: var(--default-paddings);
   border-radius: 0;
   opacity: 0.8;
-  transition: opacity .3s;
+  transition: opacity var(--default-trs-time);
 }
 
 .search input[type="button"]:hover {
@@ -146,8 +181,44 @@ footer {
   background-color: var(--dark-bg-color);
   font-size: var(--smaller-font-size);
   padding: var(--default-paddings);
-  color: var(--light-text-color);
+  color: var(--text-color-light);
   flex-shrink: 0;
+}
+
+a.btn {
+  display: inline-block;
+  padding: var(--btn-spacer);
+  background-color: var(--primary-btn-color);
+  color: var(--primary-btn-text-color);
+  margin-top: var(--default-padding-y);
+  transition: all var(--default-trs-time);
+  font-weight: bold;
+  font-family: var(--control-font-family);
+}
+
+a.btn:hover {
+  background-color: var(--primary-btn-hover-color);
+  color: var(--primary-btn-hover-text-color);
+}
+
+.wrapper-stretched-link,
+.block-item {
+  position: relative;
+}
+
+a.stretched-link::after {
+  content: ' ';
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
 }
 
 .carousel {
@@ -172,7 +243,7 @@ footer {
 }
 
 .carousel-slides::-webkit-scrollbar-thumb {
-  background: var(--link-color);
+  background: var(--primary-color);
 }
 
 .carousel-slides::-webkit-scrollbar-button {
@@ -196,6 +267,14 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: var(--primary-bg-color);
+}
+
+.carousel-slides > div.bg-light {
+  background: var(--primary-bg-color);
+}
+.carousel-slides > div.bg-dark {
+  background: var(--dark-bg-color);
 }
 
 .carousel-slides > div img {
@@ -205,6 +284,68 @@ footer {
   width: auto;
 }
 
+.carousel-slide-description {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: left;
+  padding: var(--default-paddings);
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.bg-dark .carousel-slide-description {
+  color: var(--text-color-light);
+}
+
+.carousel-slide-description.text-left {
+  text-align: left;
+}
+
+.carousel-slide-description.text-center {
+  text-align: center;
+}
+
+.carousel-slide-description.text-right {
+  text-align: right;
+}
+
+.carousel-slide-description.x-left {
+  align-content: flex-start;
+}
+
+.carousel-slide-description.x-right {
+  align-content: flex-end;
+}
+
+.carousel-slide-description.x-center {
+  align-content: center;
+}
+
+.carousel-slide-description.y-top {
+  justify-content: flex-start;
+}
+
+.carousel-slide-description.y-bottom {
+  justify-content: flex-end;
+}
+
+.carousel-slide-description.y-center {
+  justify-content: center;
+}
+
+.carousel-slide-description h2 {
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.carousel-slide-description p,
+.carousel-slide-description a {
+  font-size: .8rem;
+}
+
 .carousel-pointers {
   display: flex;
   flex-flow: row nowrap;
@@ -212,15 +353,24 @@ footer {
 
 .carousel-pointers > a {
   display: inline-flex;
-  width: 20%;
-  height: 1.5rem;
   background: var(--primary-bg-color);
-  color: var(--link-color);
+  color: var(--text-color);
   text-align: center;
   align-items: center;
   justify-content: center;
   text-decoration: none;
   margin: 0;
+  transition: all var(--default-trs-time);
+  flex: 1 0 auto;
+  font-family: var(--control-font-family);
+  font-weight: bold;
+  padding: 3px 0;
+}
+
+.carousel-pointers > a:hover,
+.carousel-pointers > a:focus {
+  background: var(--primary-color);
+  color: var(--secondary-color);
 }
 
 .blocks {
@@ -233,11 +383,73 @@ footer {
 .blocks .block-item {
   flex: 1 0 100%;
   padding: var(--default-paddings);
+  /* position: relative; just find them  */
 }
 
-@media (min-width: 600px) {
+.block-item .img-fluid {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 250px;
+  display: block;
+  margin: 0 auto;
+  
+  border-radius: 8px;
+  filter: blur(2px) grayscale(1) brightness(80%);
+  transform: scale(1);
+
+  transition: all .7s;
+  position: relative;
+  margin-bottom: var(--default-padding-y);
+}
+
+.block-item:hover .img-fluid {
+  filter: blur(0) grayscale(0) brightness(1);
+  /* transform: scale(2); */
+  /* height: 300px; */
+  /* max-width: none; */
+  z-index: 100;
+}
+
+.block-item h2 {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-weight: 500;
+  color: var(--text-color-light);
+  font-size: 1.2rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding-left: var(--default-padding-x);
+  padding-right: var(--default-padding-x);
+  transition: all .7s;
+  opacity: 1;
+}
+
+.block-item:hover h2 {
+  opacity: 0;
+}
+
+.block-item p {
+  font-size: .8rem;
+}
+
+@media (min-width: 500px) {
+  .block-item h2 {
+    font-size: 1.5rem;
+  }
+
+  .block-item p {
+    font-size: .9rem;
+  }
+}
+
+@media (min-width: 800px) {
   .container {
-    max-width: calc(600px - 20px);
+    max-width: calc(800px - 20px);
   }
 
   .top-line {
@@ -273,6 +485,15 @@ footer {
   .carousel {
     max-width: 80%;
   }
+
+  .carousel-slide-description h2 {
+    font-size: 3rem;
+  }
+  
+  .carousel-slide-description p,
+  .carousel-slide-description a {
+    font-size: .9rem;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -283,5 +504,14 @@ footer {
   .blocks .block-item {
     flex: 1 0 25%;
     max-width: 25%;
+  }
+
+  .carousel-slide-description h2 {
+    font-size: 4rem;
+  }
+  
+  .carousel-slide-description p,
+  .carousel-slide-description a {
+    font-size: 1rem;
   }
 }

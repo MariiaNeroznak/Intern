@@ -1,0 +1,26 @@
+:root {
+    --default-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-size: 16px;
+    font-family: var(--default-font);
+}
+
+.container {
+    display: grid;
+    /* grid-template-columns: [columns-start] 1fr [nav-end] 2fr [columns-end]; */
+    /* grid-template-rows: [row-top] 2fr [header-end] auto [footer-start] 1fr [row-bottom]; */
+    /* grid-template-columns: repeat(3, 50px [col-start]); */
+    grid-template-columns: 1fr 2fr 5fr 3fr;
+}
+
+.container > * {
+    border: 1px solid #000;
+}
+
+

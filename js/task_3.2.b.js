@@ -1,7 +1,7 @@
 "use strict";
 
 const sum = (...args) => {
-    var sum = 0;
+    let sum = 0;
   
     for (let arg of args) {
         if (isNaN(+arg)) return;

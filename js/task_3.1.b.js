@@ -1,4 +1,6 @@
-function range(x, y) {
+"use strict";
+
+const range = (x, y) => {
   var resultArray = [];
   var min = Math.round(parseFloat(x));
   var max = Math.round(parseFloat(y));
@@ -8,6 +10,6 @@ function range(x, y) {
     resultArray.push(i);
   }
   return resultArray;
-}
+};
 
 module.exports = range;

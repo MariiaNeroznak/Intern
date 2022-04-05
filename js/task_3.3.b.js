@@ -14,8 +14,8 @@ var houses = [
 ];
 
 function getMotto(name) {
-  let findedObj = houses.find((item) => item.name == name);
-  if (findedObj) return findedObj.motto;
+  const findedObj = houses.find((item) => item.name === name);
+  return findedObj?.motto || false;
 }
 
 module.exports = getMotto;

@@ -1,9 +1,9 @@
 const getMotto = require("./task_3.3.b");
 
-test("check getMotto results", function () {
+test("check getMotto results", () => {
   expect(getMotto("Targaryen")).toBe("Fire and Blood");
   expect(getMotto("Stark")).not.toBe("Fire and Blood");
   expect(getMotto("Tully")).toBe("Family, Duty, Honor");
-  expect(getMotto("")).toBeUndefined();
-  expect(getMotto()).toBeUndefined();
+  expect(getMotto("")).toBe(false);
+  expect(getMotto()).toBe(false);
 });

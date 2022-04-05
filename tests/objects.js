@@ -114,3 +114,17 @@ console.log(styles);
 let arr2 = [1, 2, 3, 4, 5, 6, 7, 8];
 arr2.splice(2, 4, 9, 8, 7, 9, 7, 6, 5, 4);
 console.log(arr2);
+
+
+
+function User() {
+  if (typeof new.target !== "function") {
+    console.log("undefined");
+    return;
+  }
+  console.log(typeof new.target);
+  console.log(new.target);
+}
+
+User();
+new User();

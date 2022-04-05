@@ -12,12 +12,11 @@ var houses = [
 ];
 
 function getMotto(name) {
-  let findedObj = houses.filter(function (item, index) {
-    if (item.name == name) return true;
-    return false;
+  var findedObj = houses.filter(function (item) {
+    return (item.name === name);
   });
   if (findedObj.length > 0) return findedObj[0].motto;
 }
 
-console.log(getMotto("Stark"));
+// console.log(getMotto("Stark"));
 module.exports = getMotto;

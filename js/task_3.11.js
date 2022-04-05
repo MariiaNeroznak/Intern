@@ -11,6 +11,6 @@ function add(addStr, string2) {
     return addStr + string2;
 }
 
-console.log(say("Hello, ")("it's me"));
+// console.log(say("Hello, ")("it's me"));
 
 module.exports = say;

@@ -11,3 +11,4 @@ const sum = (...args) => {
 };
 
 module.exports = sum;
+

@@ -1,25 +1,16 @@
 'use strict';
 
-// let say = function itself(str) {
-//     this.text += str;
-//     return itself;
-// }
-// say.text = "";
-// say.toString = function () {
-//     return this.text;
-// }
+/* Write the definition of the function "say" in such way that calling this:
+say("Hello,")("it’s me"); //Would return "Hello, it’s me"; */
 function say(str) {
-    let text = str;
-    function add(addStr) {
-        text += addStr;
-        return add;
+    return function(string2) {
+        return add(str, string2);   
     }
-    add.toString = function() {
-        return text;
-    }
-    return add;
+}
+function add(addStr, string2) {
+    return addStr + string2;
 }
 
-console.log(String(say("Hello, ")("it's me")));
+console.log(say("Hello, ")("it's me"));
 
 module.exports = say;

@@ -3,6 +3,6 @@
 function getX(x) {
     return y => x + y;
 }
-console.log(getX(10));
-console.log(getX(10)(2));
+// console.log(getX(10));
+// console.log(getX(10)(2));
 module.exports = getX;

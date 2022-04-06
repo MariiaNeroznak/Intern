@@ -5,7 +5,7 @@ sevenAte9('79797') // returns '777' */
 function sevenAte9(str) {
     let curIndex = 0;
     while(true) {
-        curIndex = str.indexOf('79', curIndex);
+        curIndex = str.indexOf('797', curIndex);
         if (curIndex < 0) break;
         str = str.slice(0, curIndex + 1) + str.slice(curIndex + 2);
     };

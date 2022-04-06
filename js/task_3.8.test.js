@@ -1,3 +1,8 @@
-const myFunction = require("./task_3.8");
+const myFunction = require('./task_3.8');
 
-test.skip("", () => {});
+test('test myFunction', () => {
+    var spied = spy(myFunction);
+    spied();
+    var report = spied.report();
+    expect(report).toBe(1);
+});

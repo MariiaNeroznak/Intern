@@ -1,7 +1,8 @@
-const wordSearchtask_5 = require("./task_3.5");
+const wordSearch = require('./task_3.5');
 
-test.skip("check wordSearch", () => {
-    expect(wordSearch("nemo")).toBe();
-    expect(wordSearch("dolor")).toBe();
+test('check wordSearch', () => {
+    expect(wordSearch('nemo')).toEqual([207]);
+    expect(wordSearch('dolor')).toEqual([0, 12, 24, 30, 108]);
+    expect(wordSearch('Dolor')).toEqual([92]);
     expect(wordSearch()).toBeUndefined();
 });

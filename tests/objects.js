@@ -128,3 +128,18 @@ function User() {
 
 User();
 new User();
+
+console.log("------------------------");
+let usr = {
+  name: "John",
+  money: 1000,
+
+  [Symbol.toPrimitive](hint) {
+    console.log(`hint: ${hint}`);
+    return hint == "string" ? `{name: "${this.name}"}` : this.money;
+  }
+}
+
+console.log(usr);
+console.log(+usr);
+console.log(usr + 500);

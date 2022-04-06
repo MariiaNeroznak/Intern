@@ -6,5 +6,6 @@ Example:
 var calc = new Calculator(0);
 amount = calc.add(5).multiply(2).add(20).divide(3); //should return 10 */
 
-function task_10() {}
-module.exports = task_10;
+class Calculator {}
+
+module.exports = Calculator;

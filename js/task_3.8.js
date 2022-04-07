@@ -4,21 +4,38 @@ var spied = spy(myFunction);
 spied(1);
 var report = spied.report(); // returns { totalCalls: 1 } */
 
-const counter = {
-  totalCalls: 0,
-};
-
 function myFunction() {
   console.log("here");
-  this.totalCalls++;
 }
+
+// var spy = function (func) {
+//     var counter = 0;
+//     function makeFunction () {
+//         counter++;
+//         func();
+//     }
+//     return {
+//         report: function () {
+//             return {totalCalls: counter}
+//         }
+//     }
+// }
 function spy(func) {
-  return func.bind(counter);
-}
+    var counter = 0;
+    // var report = function () {return counter};
+    function wrapper () {
+        this.counter++;
+        func();
+    }
+    return wrapper;
+};
 
 var spied = spy(myFunction);
 spied();
 var report = spied.report(); // returns { totalCalls: 1 }
 console.log(report);
+
+
+console.log(getCode());    // Returns the apiCode
 
 module.exports = myFunction;

@@ -6,32 +6,35 @@ Example:
 var calc = new Calculator(0);
 amount = calc.add(5).multiply(2).add(20).divide(3); //should return 10 */
 
-const calcVal = {
-    result: 0
-}
+var Calculator = function (startVal) {
+    var result = startVal;
 
-function Calculator(starValue) {
-    calcVal.result = starValue;
+    return {
+        add: function (val) {
+            result += val;
+            return this;
+        },
+        subtract: function (val) {
+            result -= val;
+            return this;
+        },
+        multiply: function (val) {
+            result *= val;
+            return this;
+        },
+        divide: function (val) {
+            result /= val;
+            return this;
+        },
+        // additional function to get result
+        getResult: function () {
+            return result;
+        }
+    }
+};
 
-    this.add = (val) => {
-        calcVal.result += val;
-        return this;
-    }
-    this.multiply = (val) => {
-        calcVal.result *= val;
-        return this;
-    }
-    this.divide = (val) => {
-        calcVal.result /= val;
-        return this;
-    }
-    // [Symbol.toPrimitive] = (hint) => {
-    //     return this.result;
-    // }
-    return this;
-}
-var calc = new Calculator(0);
-let amount = calc.add(5).multiply(2).add(20).divide(3); //should return 10
-console.log(amount);
+// var calc = new Calculator(0);
+// var amount = calc.add(5).multiply(2).add(20).divide(3).getResult(); //should return 10
+// console.log(amount);
 
 module.exports = Calculator;

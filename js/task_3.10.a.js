@@ -31,13 +31,13 @@ Calculator.prototype = {
         return this;
     },
     // additional function to get result
-    // getResult: function () {
-    //     return result;
-    // }
+    getResult: function () {
+        return this.startVal;
+    }
 };
 
-var calc = new Calculator(0);
-var amount = calc.add(5).multiply(2).add(20).divide(3); //should return 10
-console.log(amount);
+// var calc = new Calculator(0);
+// var amount = calc.add(5).multiply(2).add(20).divide(3).getResult(); //should return 10
+// console.log(amount);
 
 module.exports = Calculator;

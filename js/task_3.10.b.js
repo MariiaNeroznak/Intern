@@ -8,7 +8,10 @@ amount = calc.add(5).multiply(2).add(20).divide(3); //should return 10 */
 
 class Calculator {
   constructor(val) {
-    this.result = val;
+    val = parseFloat(val);
+    if (!isNaN(val)) {
+      this.result = val;
+    } else this.result = 0;
   }
   add(val) {
     this.result += val;
@@ -31,8 +34,8 @@ class Calculator {
   }
 }
 
-// const calc = new Calculator(0);
-// const amount = calc.add(5).multiply(2).add(20).divide(3).getResult(); //should return 10
-// console.log(amount);
+const calc = new Calculator(0);
+const amount = calc.add(5).multiply(2).add(20).divide(3); //should return 10
+console.log(amount);
 
 module.exports = Calculator;

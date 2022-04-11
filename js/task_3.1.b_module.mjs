@@ -1,4 +1,6 @@
 "use strict";
+// The module test does not work without additional jest settings
+// https://jestjs.io/docs/ecmascript-modules
 
 const getMyself = (a) => {
   return a;

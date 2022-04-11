@@ -3,13 +3,13 @@ sevenAte9('79712312') // returns '7712312'
 sevenAte9('79797') // returns '777' */
 
 function sevenAte9(str) {
-    let curIndex = 0;
-    while(true) {
-        curIndex = str.indexOf('797', curIndex);
-        if (curIndex < 0) break;
-        str = str.slice(0, curIndex + 1) + str.slice(curIndex + 2);
-    };
-    return str;
+  let curIndex = 0;
+  while (true) {
+    curIndex = str.indexOf("797", curIndex);
+    if (curIndex < 0) break;
+    str = str.slice(0, curIndex + 1) + str.slice(curIndex + 2);
+  }
+  return str;
 }
 
 module.exports = sevenAte9;

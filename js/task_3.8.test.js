@@ -1,9 +1,14 @@
-const spy = require('./task_3.8');
-const myFunction = require('./task_3.8');
+const spy = require("./task_3.8");
+const myFunction = require("./task_3.8");
 
-test('test myFunction', () => {
-  var spied = spy(myFunction);
+test("test myFunction", () => {
+  const spied = spy(myFunction);
   spied();
-  var report = spied.report();
+  let report = spied.report();
+
   expect(report).toEqual({ totalCalls: 1 });
+  spied();
+  spied();
+  report = spied.report();
+  expect(report).toEqual({ totalCalls: 3 });
 });

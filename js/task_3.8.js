@@ -5,12 +5,11 @@ spied(1);
 var report = spied.report(); // returns { totalCalls: 1 } */
 
 function myFunction() {
-  console.log('here');
+  console.log("here");
 }
 
 function spy(func) {
-  var counter = 0;
-  // var report = function () {return counter};
+  let counter = 0;
   function wrapper() {
     counter++;
     func();

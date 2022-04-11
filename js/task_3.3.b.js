@@ -19,7 +19,7 @@ b) Use a suitable ES6 method
 Example:
 motto("Tyrell") // returns "Growing strong" */
 
-var houses = [
+const houses = [
   { name: "Targaryen", motto: "Fire and Blood" },
   { name: "Stark", motto: "Winter is Coming" },
   { name: "Bolton", motto: "Our Blades Are Sharp" },

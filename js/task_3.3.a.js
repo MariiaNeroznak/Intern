@@ -32,7 +32,7 @@ var houses = [
 
 function getMotto(name) {
   var findedObj = houses.filter(function (item) {
-    return (item.name === name);
+    return item.name === name;
   });
   if (findedObj.length > 0) return findedObj[0].motto;
 }

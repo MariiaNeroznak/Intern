@@ -19,21 +19,24 @@ function removeDublicates1(arr) {
 }
 
 function removeDublicates2(arr) {
-    if (!arr) return;
-    let uniqueChars = [];
-    arr.forEach((c) => {
-      if (!uniqueChars.includes(c)) uniqueChars.push(c);
-    });
-    return uniqueChars;
-  }
+  if (!arr) return;
+  let uniqueChars = [];
+  arr.forEach((c) => {
+    if (!uniqueChars.includes(c)) uniqueChars.push(c);
+  });
+  return uniqueChars;
+}
 
 function removeDublicates3(arr) {
   return arr?.filter((c, index) => arr.indexOf(c) === index);
 }
 
 function removeDublicates4(arr) {
-    // if (!arr) return;
-    return arr?.reduce((unique, item) => unique.includes(item) ? unique : [...unique, item], []);
+  // if (!arr) return;
+  return arr?.reduce(
+    (unique, item) => (unique.includes(item) ? unique : [...unique, item]),
+    []
+  );
 }
 
 function removeDublicates(arr) {

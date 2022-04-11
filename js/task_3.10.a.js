@@ -7,33 +7,32 @@ var calc = new Calculator(0);
 amount = calc.add(5).multiply(2).add(20).divide(3); //should return 10 */
 
 var Calculator = function (startVal) {
-    startVal = parseFloat(startVal);
-    if (!isNaN(startVal)) {
-        this.startVal = startVal;
-    }
-    else this.startVal = 0;
+  startVal = parseFloat(startVal);
+  if (!isNaN(startVal)) {
+    this.startVal = startVal;
+  } else this.startVal = 0;
 };
 Calculator.prototype = {
-    add: function (val) {
-        this.startVal += val;
-        return this;
-    },
-    subtract: function (val) {
-        this.startVal -= val;
-        return this;
-    },
-    multiply: function (val) {
-        this.startVal *= val;
-        return this;
-    },
-    divide: function (val) {
-        this.startVal /= val;
-        return this;
-    },
-    // additional function to get result
-    getResult: function () {
-        return this.startVal;
-    }
+  add: function (val) {
+    this.startVal += val;
+    return this;
+  },
+  subtract: function (val) {
+    this.startVal -= val;
+    return this;
+  },
+  multiply: function (val) {
+    this.startVal *= val;
+    return this;
+  },
+  divide: function (val) {
+    this.startVal /= val;
+    return this;
+  },
+  // additional function to get result
+  getResult: function () {
+    return this.startVal;
+  },
 };
 
 // var calc = new Calculator(0);

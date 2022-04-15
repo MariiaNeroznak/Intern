@@ -6,7 +6,7 @@ Example:
 var calc = new Calculator(0);
 amount = calc.add(5).multiply(2).add(20).divide(3); //should return 10 */
 
-class Calculator {
+export class Calculator {
   constructor(val) {
     val = parseFloat(val);
     if (!isNaN(val)) {
@@ -38,4 +38,4 @@ class Calculator {
 // const amount = calc.add(5).multiply(2).add(20).divide(3); //should return 10
 // console.log(amount);
 
-module.exports = Calculator;
+// module.exports = Calculator;

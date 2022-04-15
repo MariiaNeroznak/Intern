@@ -5,7 +5,7 @@ a) Do not use any ES6 methods
 b) Use a suitable ES6 method */
 // ES6 methods
 
-function sum(...args) {
+export function sum(...args) {
   let sum = 0;
 
   // sum = args.reduce((sum, item) => sum += (isNaN(+item) ? 0 : item), 0);
@@ -17,4 +17,4 @@ function sum(...args) {
   return sum;
 }
 
-module.exports = sum;
+// module.exports = sum;

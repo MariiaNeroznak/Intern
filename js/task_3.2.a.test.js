@@ -1,4 +1,5 @@
-const sum = require("./task_3.2.a");
+// const sum = require("./task_3.2.a");
+import {sum} from "./task_3.2.a";
 
 test("get range array from a to b", function () {
   expect(sum(1, 2)).toBe(3);

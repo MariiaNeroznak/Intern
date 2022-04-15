@@ -13,7 +13,7 @@ function say2(str) {
   add.valueOf = () => 0;
   return add;
 }
-function say(str) {
+export function say(str) {
   return (addStr) => str + addStr;
 }
 
@@ -22,4 +22,4 @@ function say(str) {
 // console.log(say2("Hello, ")("it's me"));
 // console.log(say("Hello, ")("it's me")(" and me").toString());
 
-module.exports = say;
+// module.exports = say;

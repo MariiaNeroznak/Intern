@@ -3,7 +3,7 @@ a) Do not use any ES6 methods
 b) Use a suitable ES6 method */
 // not ES6
 
-function range(x, y) {
+export function range(x, y) {
   var resultArray = [];
   var min = Math.round(parseFloat(x));
   var max = Math.round(parseFloat(y));
@@ -15,4 +15,4 @@ function range(x, y) {
   return resultArray;
 }
 
-module.exports = range;
+// module.exports = range;

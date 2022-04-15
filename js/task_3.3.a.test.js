@@ -1,4 +1,5 @@
-const getMotto = require("./task_3.3.a");
+// const getMotto = require("./task_3.3.a");
+import { getMotto } from './task_3.3.a';
 
 test("check getMotto results", function () {
   expect(getMotto("Targaryen")).toBe("Fire and Blood");

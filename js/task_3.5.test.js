@@ -1,4 +1,5 @@
-const wordSearch = require("./task_3.5");
+// const wordSearch = require("./task_3.5");
+import {wordSearch} from "./task_3.5";
 
 test("check wordSearch", () => {
   expect(wordSearch("nemo")).toEqual([207]);

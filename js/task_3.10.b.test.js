@@ -1,4 +1,5 @@
-const Calculator = require("./task_3.10.b");
+// const Calculator = require("./task_3.10.b");
+import {Calculator} from "./task_3.10.b";
 
 test("check calculator b", () => {
   var calc = new Calculator(0);

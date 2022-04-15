@@ -1,0 +1,96 @@
+{
+  "logo": {"text": "Logo"},
+  "menu": [
+    {"name": "Home", "link": "/"},
+    {"name": "Shop", "link": "/shop"},
+    {"name": "Contacts", "link": "/contacts"}
+  ],
+  "carousel": [
+    {
+      "id": 1,
+      "theme": "bg-light",
+      "img": "https://picsum.photos/id/20/500/900",
+      "description": "Description of image",
+      "lead": "Lead text",
+      "text": "Lorem ipsum dolor sit amet.",
+      "link": "other.html",
+      "linkText": "and link",
+      "xPosition": "x-center",
+      "yPosition": "y-center",
+      "textAlign": "text-center",
+      "space": "3",
+      "linkSpace": "1"
+    },
+    {
+      "id": 2,
+      "theme": "bg-dark",
+      "img": "https://picsum.photos/id/598/1200/900",
+      "description": "Article of image",
+      "lead": "Lead text",
+      "text": "Lorem, ipsum.",
+      "link": "https://css-tricks.com/css-only-carousel/",
+      "linkText": "article about carousel",
+      "linkTarget": "_blank",
+      "yPosition": "y-bottom"
+    },
+    {
+      "id": 3,
+      "img": "https://picsum.photos/id/831/400/600",
+      "description": "Description of image 3",
+      "lead": "Lead text",
+      "text": "Lorem ipsum dolor sit amet consectetur.",
+      "link": "other.html",
+      "linkView": "button",
+      "linkText": "button link",
+      "xPosition": "x-right",
+      "yPosition": "y-bottom",
+      "textAlign": "text-right"
+    },
+    {
+      "id": 4,
+      "theme": "bg-dark",
+      "img": "https://picsum.photos/id/831/500/600",
+      "description": "Description of image 3",
+      "lead": "Lead text",
+      "text": "Lorem ipsum dolor sit amet consectetur.",
+      "link": "other.html",
+      "linkView": "button",
+      "linkText": "button link",
+      "xPosition": "x-right",
+      "yPosition": "y-bottom",
+      "textAlign": "text-right"
+    },
+    {
+      "id": 5,
+      "theme": "bg-dark",
+      "img": "https://picsum.photos/id/831/1200/800",
+      "description": "Description of image 3",
+      "lead": "Lead text",
+      "text": "Lorem ipsum dolor sit amet consectetur.",
+      "link": "other.html",
+      "linkView": "button",
+      "linkText": "button link",
+      "xPosition": "x-right",
+      "yPosition": "y-bottom",
+      "textAlign": "text-right"
+    },
+    {
+      "id": 6,
+      "theme": "bg-black",
+      "img": "https://picsum.photos/id/20/300/500",
+      "description": "Description of image",
+      "lead": "Lead text",
+      "text": "Lorem ipsum dolor sit amet.",
+      "link": "other.html",
+      "linkText": "and link",
+      "xPosition": "x-center",
+      "yPosition": "y-center",
+      "textAlign": "text-center",
+      "space": "1",
+      "linkSpace": "2"
+    },
+  ],
+  "shop": [
+    {"id": 1, "name": "text"}
+  ]
+}

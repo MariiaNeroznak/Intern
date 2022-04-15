@@ -4,11 +4,11 @@ var spied = spy(myFunction);
 spied(1);
 var report = spied.report(); // returns { totalCalls: 1 } */
 
-function myFunction() {
-  console.log("here");
+export function myFunction() {
+  // console.log("here");
 }
 
-function spy(func) {
+export function spy(func) {
   let counter = 0;
   function wrapper() {
     counter++;
@@ -25,5 +25,5 @@ function spy(func) {
 // var report = spied.report(); // returns { totalCa    lls: 1 }
 // console.log(report);
 
-module.exports = myFunction;
-module.exports = spy;
+// module.exports = myFunction;
+// module.exports = spy;

@@ -3,7 +3,7 @@ a) Do not use any ES6 methods
 b) Use a suitable ES6 method */
 // not ES6
 
-function sum() {
+export function sum() {
   var sum = 0;
 
   for (var i = 0; i < arguments.length; i++) {
@@ -13,4 +13,4 @@ function sum() {
   return sum;
 }
 
-module.exports = sum;
+// module.exports = sum;

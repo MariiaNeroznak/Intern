@@ -1,4 +1,5 @@
-const sevenAte9 = require("./task_3.7");
+// const sevenAte9 = require("./task_3.7");
+import {sevenAte9} from "./task_3.7";
 
 test("check sevenAte9", () => {
   expect(sevenAte9("79712312")).toBe("7712312");

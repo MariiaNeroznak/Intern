@@ -30,7 +30,7 @@ var houses = [
   { name: "Martell", motto: "Unbowed, Unbent, Unbroken" },
 ];
 
-function getMotto(name) {
+export function getMotto(name) {
   var findedObj = houses.filter(function (item) {
     return item.name === name;
   });
@@ -38,4 +38,4 @@ function getMotto(name) {
 }
 
 // console.log(getMotto("Stark"));
-module.exports = getMotto;
+// module.exports = getMotto;

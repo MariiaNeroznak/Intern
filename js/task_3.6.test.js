@@ -1,4 +1,5 @@
-const addX = require("./task_3.6");
+// const addX = require("./task_3.6");
+import {addX} from "./task_3.6";
 
 test("check addX", () => {
   expect(addX(10)(2)).toBe(12);

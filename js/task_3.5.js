@@ -4,7 +4,7 @@
 
 const text =
   "dolor Lorem dolor ipsum dolor dolor sit amet consectetur, adipisicing elit. Eos laudantium, Dolor similique dolor esse delectus quod voluptas molestias iste quibusdam doloremque! Corrupti expedita inventore nemo aspernatur rem officiis nesciunt quae ipsum molestiae accusamus itaque, ipsam ullam explicabo quo sit aliquam beatae aut deserunt, voluptate, quia nihil cum impedit architecto! Est, quo numquam?";
-function wordSearch(w) {
+export function wordSearch(w) {
   if (!w) return;
   let arr = [];
   let res;
@@ -28,4 +28,4 @@ function wordSearch(w) {
 // console.log(wordSearch("dolor"));
 // console.log(wordSearch("Dolor"));
 
-module.exports = wordSearch;
+// module.exports = wordSearch;

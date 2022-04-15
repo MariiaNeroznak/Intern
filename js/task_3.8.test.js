@@ -1,5 +1,6 @@
-const spy = require("./task_3.8");
-const myFunction = require("./task_3.8");
+// const spy = require("./task_3.8");
+// const myFunction = require("./task_3.8");
+import {spy, myFunction} from "./task_3.8";
 
 test("test myFunction", () => {
   const spied = spy(myFunction);

@@ -1,4 +1,5 @@
-const range = require("./task_3.1.a");
+import {range} from './task_3.1.a'
+// const range = require("./task_3.1.a");
 
 test("get range array from a to b", function () {
   expect(range(5, 9)).toEqual([5, 6, 7, 8]);

@@ -32,9 +32,9 @@ const houses = [
   { name: "Martell", motto: "Unbowed, Unbent, Unbroken" },
 ];
 
-function getMotto(name) {
+export function getMotto(name) {
   const findedObj = houses.find((item) => item.name === name);
   return findedObj?.motto || false;
 }
 
-module.exports = getMotto;
+// module.exports = getMotto;

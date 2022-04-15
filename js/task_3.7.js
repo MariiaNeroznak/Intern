@@ -2,7 +2,7 @@
 sevenAte9('79712312') // returns '7712312'
 sevenAte9('79797') // returns '777' */
 
-function sevenAte9(str) {
+export function sevenAte9(str) {
   let curIndex = 0;
   while (true) {
     curIndex = str.indexOf("797", curIndex);
@@ -12,4 +12,4 @@ function sevenAte9(str) {
   return str;
 }
 
-module.exports = sevenAte9;
+// module.exports = sevenAte9;

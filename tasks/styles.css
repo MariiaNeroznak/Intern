@@ -185,6 +185,10 @@ footer {
   flex-shrink: 0;
 }
 
+.hide {
+  display: none;
+}
+
 a.btn {
   display: inline-block;
   padding: var(--btn-spacer);
@@ -239,7 +243,7 @@ a.stretched-link::after {
 
 .carousel-slides::-webkit-scrollbar {
   width: auto;
-  height: 2px;
+  height: 3px;
 }
 
 .carousel-slides::-webkit-scrollbar-thumb {

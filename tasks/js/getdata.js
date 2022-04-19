@@ -13,7 +13,7 @@ export class Loader {
     loadAndParseBlockData(bName) {
         return fetch(this.serverLink + bName)
         .then((response) => {
-            console.log('Answer was received.');
+            // console.log('Answer was received.');
             if (response.status === 200)
                 return response.json();
             else

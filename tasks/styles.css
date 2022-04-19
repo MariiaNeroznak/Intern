@@ -205,6 +205,7 @@ a.btn:hover {
   color: var(--primary-btn-hover-text-color);
 }
 
+
 .wrapper-stretched-link,
 .block-item {
   position: relative;
@@ -412,7 +413,7 @@ a.stretched-link::after {
   /* transform: scale(2); */
   /* height: 300px; */
   /* max-width: none; */
-  z-index: 100;
+  /* z-index: 100; */
 }
 
 .block-item h2 {

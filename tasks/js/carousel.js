@@ -13,6 +13,8 @@ export class Carousel {
         
         this.loader = loader;
         this.fillCarousel();
+
+        // this.addEventNotMoveUp();
     }
 
     async loadData(id) {
@@ -65,7 +67,7 @@ export class Carousel {
         // "lead": "Lead text",
         if (!slide.lead) slide.lead = '';
         // "text": "Lorem ipsum dolor sit amet.",
-        if (!slide.lead) slide.lead = '';
+        if (!slide.text) slide.text = '';
 
         // "link": "other.html",
         if (!slide.link) slide.link = '';
@@ -116,5 +118,24 @@ export class Carousel {
         // "linkSpace": "1" 1 - 4,
         if (!slide.linkSpace) slide.linkSpace = 0;
         return slide;
+    }
+
+    addEventNotMoveUp() {
+        console.log("addEventNotMoveUp");
+        document.addEventListener('click', function (event) {
+            console.clear();
+            if (!event.target) return;
+            const target = event.target.closest('.carousel-pointers a.point');
+            if (!target) return;
+            console.log(target);
+            console.log(this);
+            // event.preventDefault();
+
+        });
+        window.addEventListener('scroll', (event) => {
+            console.log("scroll");
+            console.log(event);
+            console.log(this);
+        });
     }
 }

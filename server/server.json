@@ -1,9 +1,22 @@
 {
   "logo": {"text": "Logo"},
   "menu": [
-    {"name": "Home", "link": "/"},
-    {"name": "Shop", "link": "/shop"},
-    {"name": "Contacts", "link": "/contacts"}
+    {
+      "link": "/",
+      "linkText": "Home"
+    },
+    {
+      "link": "#",
+      "linkText": "Shop"
+    },
+    {
+      "link": "#",
+      "linkText": "Sale"
+    },
+    {
+      "link": "#",
+      "linkText": "Contacts"
+    }
   ],
   "carousel": [
     {
@@ -136,6 +149,100 @@
     }
   ],
   "shop": [
-    {"id": 1, "name": "text"}
+     {
+      "id": 1,
+      "title": "Some text about item",
+      "img": "https://picsum.photos/id/1016/300/200",
+      "alt": "Product",
+      "name": "Header name",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque placeat natus itaque dignissimos iure. Porro?",
+      "space": "3"
+    },
+    {
+      "id": 2,
+      "title": "Some text about item",
+      "img": "https://picsum.photos/id/292/300/220",
+      "alt": "Product",
+      "name": "Sub header",
+      "description": "Eum eligendi non nihil inventore delectus iste enim laboriosam assumenda. Libero repellendus natus dignissimos! Hic.",
+      "link": "other.html",
+      "linkView": "btn",
+      "linkText": "A button",
+      "space": "4"
+    },
+    {
+      "id": 3,
+      "title": "Some text about item",
+      "img": "https://picsum.photos/id/599/300/180",
+      "alt": "Product",
+      "name": "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
+      "description": "Non, eius deserunt reiciendis sed mollitia minus at, veniam fuga laborum dolorevquia vel rerum!",
+      "link": "other.html",
+      "linkText": "stretched link"
+    },
+    {
+      "id": 4,
+      "title": "Some text about item",
+      "img": "https://picsum.photos/id/820/500/800",
+      "alt": "Product",
+      "name": "Lorem, ipsum.",
+      "description": "Ducimus temporibus laboriosam reprehenderit tempora! Voluptatum, omnis quasi quod doloribus ad eum recusandae fuga earum.",
+      "link": "other.html",
+      "linkView": "btn",
+      "linkText": "A button"
+    },
+    {
+      "id": 5,
+      "title": "Some text about item",
+      "img": "https://picsum.photos/id/658/400/180",
+      "alt": "Product",
+      "name": "Lorem ipsum dolor sit amet.",
+      "description": "Incidunt et ratione quaerat excepturi impedit tempora magni dolores aliquid, ullam, necessitatibus magnam voluptatem neque!",
+      "link": "other.html",
+      "linkView": "btn",
+      "linkText": "A button"
+    },
+    {
+      "id": 6,
+      "title": "Some text about item",
+      "img": "https://picsum.photos/id/571/300/480",
+      "alt": "Product",
+      "name": "Lorem ipsum dolor sit.",
+      "description": "Quibusdam, optio nisi rerum ut eius minima in repellendus alias est, libero, repellat fugiat?",
+      "link": "other.html",
+      "linkView": "btn",
+      "linkText": "A button"
+    },
+    {
+      "id": 7,
+      "title": "Some text about item",
+      "img": "https://picsum.photos/id/900/300/300",
+      "alt": "Product",
+      "name": "Lorem.",
+      "description": "Laboriosam, debitis. Nam perferendis impedit maiores architecto repudiandae temporibus earum. Aspernatur sequi deleniti officia ad.",
+      "link": "other.html",
+      "linkView": "btn",
+      "linkText": "A button"
+    },
+    {
+      "id": 8,
+      "img": "https://picsum.photos/id/72/350/300",
+      "alt": "Product",
+      "name": "Lorem, ipsum.",
+      "description": "Quam fuga sed, quae quasi tempora hic consequuntur sint odit libero asperiores recusandae amet similique!",
+      "link": "other.html",
+      "linkView": "btn",
+      "linkText": "A button"
+    },
+    {
+      "id": 9,
+      "title": "Some text about item",
+      "img": "https://picsum.photos/id/639/300/350",
+      "alt": "Product",
+      "description": "Qui perferendis, pariatur facilis minus hic necessitatibus porro ea cum alias rem sed ipsa sapiente.",
+      "link": "other.html",
+      "linkView": "btn",
+      "linkText": "A button"
+    }
   ]
 }

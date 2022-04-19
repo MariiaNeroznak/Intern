@@ -14,8 +14,8 @@
 
 <body>
     <script>
-        document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
-        ':35729/livereload.js?snipver=1"></' + 'script>');
+        document.write('<script src=\'http://' + (location.host || 'localhost').split(':')[0] +
+        ':35729/livereload.js?snipver=1\'></' + 'script>');
     </script>
     <div class='container'>
         <header>
@@ -29,12 +29,7 @@
                 </div>
                 <a href='#' class='singin' title='Sign in to have more functionality'>Log in</a>
             </div>
-            <nav class='main-menu'>
-                <a href='#'>Link 1</a>
-                <a href='#'>Link 2</a>
-                <a href='#'>Link 3</a>
-                <a href='#'>Link 4</a>
-            </nav>
+            <nav id='menu' class='main-menu'></nav>
         </header>
         <div class='content'>
             <div id='carousel' class='carousel'>
@@ -47,8 +42,8 @@
             </div>
 
 
-            <div class='blocks'>
-                <div class='block-item' title='Some text about item'>
+            <div id='shop' class='blocks'>
+                <!-- <div class='block-item' title='Some text about item'>
                     <img src='https://picsum.photos/id/1016/300/200' alt='Product' class='img-fluid'>
                     <h2>Header name</h2>
                     <p class='space-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque placeat natus
@@ -109,7 +104,7 @@
                     <p>Qui perferendis, pariatur facilis minus hic necessitatibus porro ea cum alias
                         rem sed ipsa sapiente.</p>
                     <a href='other.html' class='btn stretched-link'>A button</a>
-                </div>
+                </div> -->
             </div>
         </div>
         <footer>Lorem ipsum dolor sit amet consectetur.</footer>

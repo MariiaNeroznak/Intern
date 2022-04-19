@@ -1,6 +1,7 @@
 export default (slide) => {
     return `<div id='slide-${slide.id}' class='bg-${slide.theme}'>
-                <img src='${slide.img}' ${slide.hideImg ? 'class=\'hide\''  : ''} alt='${slide.description}'>
+                ${(slide.hideImg ? ''  : 
+                '<img src=\'' + slide.img + '\' alt=\'' + slide.description + '\'>')}
                 <div class='carousel-slide-description ${slide.xPosition} ${slide.yPosition} ${slide.textAlign}'>
                     ${slide.lead ? '<h2>' + slide.lead + '</h2>' : ''}
                     ${slide.text ? '<p class=\'space-' + slide.space + '\'>' + slide.text + '</p>' : ''}

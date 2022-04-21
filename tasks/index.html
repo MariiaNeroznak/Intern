@@ -1,112 +1,39 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 
 <head>
-    <meta charset='UTF-8' />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <link rel='stylesheet' href='styles.css'>
-    <!-- <script src='js/getdata.js'></script> -->
-    <script src='js/app.js' type='module'></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css">
+    <!-- <script src="js/getdata.js"></script> -->
+    <script src="js/app.js" type="module"></script>
     <title>Task</title>
 
 </head>
 
 <body>
-    <!-- <script>
-        document.write('<script src=\'http://' + (location.host || 'localhost').split(':')[0] +
-        ':35729/livereload.js?snipver=1\'></' + 'script>');
-    </script> -->
-    <div class='container'>
+    <script>
+        document.write("<script src=\"http://" + (location.host || "localhost").split(":")[0] +
+        ":35729/livereload.js?snipver=1\"></" + "script>");
+    </script>
+
+    <div class="container">
         <header>
-            <div class='top-line'>
-                <a href='#' class='logo' title='Home page'>Logo</a>
-                <div class='search'>
-                    <form action='#'>
-                        <input type='text' placeholder='Search someting...' title='Write here what you want to find' />
-                        <input type='button' value='Search' title='Press to search' />
+            <div class="top-line">
+                <a href="#" class="logo" title="Home page">Logo</a>
+                <div class="search">
+                    <form action="#">
+                        <input type="text" placeholder="Search someting..." title="Write here what you want to find" />
+                        <input type="button" value="Search" title="Press to search" />
                     </form>
                 </div>
-                <a href='#' class='singin' title='Sign in to have more functionality'>Log in</a>
+                <a href="#" class="singin" title="Sign in to have more functionality">Log in</a>
             </div>
-            <nav id='menu' class='main-menu'></nav>
         </header>
-        <div class='content'>
-            <div id='carousel' class='carousel'>
-                <div class='carousel-slides'></div>
-                <div class='carousel-pointers'></div>
-                <!-- <div class='carousel-navs'>
-                    <a href='#' class='prev'>Prev</a>
-                    <a href='#' class='next'>Next</a>
-                </div> -->
-            </div>
 
+        <div id="content"></div>
 
-            <div id='shop' class='blocks'>
-                <!-- <div class='block-item' title='Some text about item'>
-                    <img src='https://picsum.photos/id/1016/300/200' alt='Product' class='img-fluid'>
-                    <h2>Header name</h2>
-                    <p class='space-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque placeat natus
-                        itaque dignissimos iure. Porro?</p>
-                </div>
-                <div class='block-item' title='Some text about item'>
-                    <img src='https://picsum.photos/id/292/300/220' alt='Product' class='img-fluid'>
-                    <h2>Sub header</h2>
-                    <p>Eum eligendi non nihil inventore delectus iste enim laboriosam assumenda. Libero
-                        repellendus natus dignissimos! Hic.</p>
-                    <a href='other.html' class='btn'>A button</a>
-                </div>
-                <div class='block-item' title='Some text about item'>
-                    <img src='https://picsum.photos/id/599/300/180' alt='Product' class='img-fluid'>
-                    <h2>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</h2>
-                    <p>Non, eius deserunt reiciendis sed mollitia minus at, veniam fuga laborum dolore
-                        quia vel rerum!</p>
-                    <a href='other.html' class='stretched-link'>stretched link</a>
-                </div>
-                <div class='block-item' title='Some text about item'>
-                    <img src='https://picsum.photos/id/820/500/800' alt='Product' class='img-fluid'>
-                    <h2>Lorem, ipsum.</h2>
-                    <p>Ducimus temporibus laboriosam reprehenderit tempora! Voluptatum, omnis quasi
-                        quod doloribus ad eum recusandae fuga earum.</p>
-                    <a href='other.html' class='btn stretched-link'>A button</a>
-                </div>
-                <div class='block-item' title='Some text about item'>
-                    <img src='https://picsum.photos/id/658/400/180' alt='Product' class='img-fluid'>
-                    <h2>Lorem ipsum dolor sit amet.</h2>
-                    <p>Incidunt et ratione quaerat excepturi impedit tempora magni dolores aliquid,
-                        ullam, necessitatibus magnam voluptatem neque!</p>
-                    <a href='other.html' class='stretched-link'>stretched link</a>
-                </div>
-                <div class='block-item' title='Some text about item'>
-                    <img src='https://picsum.photos/id/571/300/480' alt='Product' class='img-fluid'>
-                    <h2>Lorem ipsum dolor sit.</h2>
-                    <p>Quibusdam, optio nisi rerum ut eius minima in repellendus alias est, <a href='other.html'>in text
-                            link</a> odio
-                        libero, repellat fugiat?</p>
-                </div>
-                <div class='block-item' title='Some text about item'>
-                    <img src='https://picsum.photos/id/900/300/300' alt='Product' class='img-fluid'>
-                    <h2>Lorem.</h2>
-                    <h3>Lorem ipsum dolor sit.</h3>
-                    <p>Laboriosam, debitis. Nam perferendis impedit maiores architecto repudiandae
-                        temporibus earum. Aspernatur sequi deleniti officia ad.</p>
-                    <a href='other.html' class='stretched-link'>stretched link</a>
-                </div>
-                <div class='block-item wrapper-stretched-link'>
-                    <img src='https://picsum.photos/id/72/350/300' alt='Product' class='img-fluid'>
-                    <h2>Lorem, ipsum.</h2>
-                    <p>Quam fuga sed, quae quasi tempora hic consequuntur sint odit libero asperiores
-                        recusandae amet similique!</p>
-                    <a href='other.html' class='btn stretched-link'>A button</a>
-                </div>
-                <div class='block-item' title='Some text about item'>
-                    <img src='https://picsum.photos/id/639/300/350' alt='Product' class='img-fluid'>
-                    <p>Qui perferendis, pariatur facilis minus hic necessitatibus porro ea cum alias
-                        rem sed ipsa sapiente.</p>
-                    <a href='other.html' class='btn stretched-link'>A button</a>
-                </div> -->
-            </div>
-        </div>
         <footer>Lorem ipsum dolor sit amet consectetur.</footer>
     </div>
 </body>

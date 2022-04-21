@@ -4,9 +4,7 @@ export default (item) => {
                 <h2>${item.name}</h2>
                 <p class='space-${item.space}'>${item.description}</p>
                 ${(item.link ?
-                    '<a href=\'' + item.link + '\'' 
-                    + (item.linkView ? ' class=\'stretched-link ' + item.linkView + '\'' : 'class=\'stretched-link\'') 
-                    + '>' + item.linkText + '</a>'
+                    `<a href='${item.link}' class='stretched-link ${item.linkView}'>${item.linkText}</a>`
                 : '')}
             </div>`;
 }

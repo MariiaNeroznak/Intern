@@ -54,6 +54,9 @@
   --spacer-4: 4rem;
 
   --default-trs-time: .3s;
+
+  --slider-pointer-height: 30px;
+  --slider-pointer-mark-height: 3px;
 }
 
 /* common settings */
@@ -244,7 +247,7 @@ a.stretched-link::after {
 
 .carousel-slides::-webkit-scrollbar {
   width: auto;
-  height: 3px;
+  height: var(--slider-pointer-mark-height);
 }
 
 .carousel-slides::-webkit-scrollbar-thumb {
@@ -275,11 +278,54 @@ a.stretched-link::after {
   background: var(--primary-bg-color);
 }
 
+.carousel-slides .arrow-btn {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 0 20px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  color: var(--text-color);
+}
+
+.carousel-slides .prev {
+  left: 0;
+  text-align: left;
+}
+.carousel-slides .next {
+  right: 0;
+  text-align: right;
+}
+.carousel-slides .arrow-btn:hover,
+.carousel-slides .arrow-btn:focus {
+  background-color: var(--primary-btn-color);
+}
+
+
+.carousel-slides > div .slide-item {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+}
+
 .carousel-slides > div.bg-light {
   background: var(--primary-bg-color);
 }
 .carousel-slides > div.bg-dark {
   background: var(--dark-bg-color);
+}
+.carousel-slides .bg-dark .arrow-btn {
+  color: var(--text-color-light);
+}
+.carousel-slides .bg-dark .arrow-btn:hover,
+.carousel-slides .bg-dark .arrow-btn:focus {
+  color: var(--text-color);
 }
 
 .carousel-slides > div img {
@@ -356,7 +402,9 @@ a.stretched-link::after {
   flex-flow: row nowrap;
 }
 
+.carousel-pointers > label,
 .carousel-pointers > a {
+  /* flex: 0 0 auto; */
   display: inline-flex;
   background: var(--primary-bg-color);
   color: var(--text-color);
@@ -366,12 +414,15 @@ a.stretched-link::after {
   text-decoration: none;
   margin: 0;
   transition: all var(--default-trs-time);
-  flex: 1 0 auto;
+  flex: 1 1 0%;
   font-family: var(--control-font-family);
   font-weight: bold;
   padding: 3px 0;
+  height: var(--slider-pointer-height);
 }
 
+.carousel-pointers > label:hover,
+.carousel-pointers > label:focus,
 .carousel-pointers > a:hover,
 .carousel-pointers > a:focus {
   background: var(--primary-color);

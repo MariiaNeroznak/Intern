@@ -1,60 +1,29 @@
-'use strict';
-
+import { Component } from './component.js';
 import getTemplateItem from '../templates/menuItem.js';
 
-export class Menu {
+export class Menu extends Component {
     constructor(loader) {
-        this.wrapper = document.getElementById('menu');
-
-        // this.counter = 0;
-        
-        this.loader = loader;
-        this.fillMenu();
+        super(loader, 'menu');
+        this._counter = 0;
     }
 
-    async loadData(id) {
-        let blockName = 'menu';
-        if (!id) blockName += '';
-        else blockName += '/' + +id;
-
-        const data = await this.loader.loadAndParseBlockData(blockName);
-        if (!data) return;  
-        
-        return data;
+    _createMainDOM(positionPoint) {
+        if (!positionPoint) return;
+        this._wrapper = document.createElement('nav');
+        this._wrapper.id = this._blockName;
+        this._wrapper.classList.add('main-menu');
+        positionPoint.append(this._wrapper);
     }
 
-    async fillMenu() {
-        let data = await this.loadData();
-
-        for (let item of data) {
-            this.addMenuItemToDOM(item);
-        }
-    }
-
-    addMenuItemToDOM(itemData) {
-        const htmlObj = this.fillTemplates(itemData);
-        if (!htmlObj) return;
-
-        this.wrapper.insertAdjacentHTML('beforeend', htmlObj.item);
-    }
-
-    fillTemplates(item) {
-        if (!this.checkData(item)) return null;
-
-        const htmlItem = getTemplateItem(item);
-
-        return {item: htmlItem};
-    }
-
-    checkData(item) {
-        // "id": 1,
-        item.counter = ++this.counter;
-
-        // "link": "other.html",
+    _checkItemData(item) {
+        item._counter = ++this._counter;
         if (!item.link) item.link = '';
-        // "linkText": "and link",
         if (!item.linkText) item.linkText = 'click me';
+    }
 
-        return item;
+    _showItem(item) {
+        if (!item) return;
+        const htmlItem = getTemplateItem(item);
+        this._wrapper.insertAdjacentHTML('beforeend', htmlItem);
     }
 }

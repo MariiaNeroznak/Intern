@@ -11,6 +11,4 @@ describe('getdata functionality', () => {
     
     expect(testMe.tryMe()).toEqual(1);
   });
-
-  
 })

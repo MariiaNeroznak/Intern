@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/MariiaNeroznak/Intern#readme",
   "devDependencies": {
-    "cross-env": "^7.0.3",
     "jest": "^27.5.1"
   }
 }

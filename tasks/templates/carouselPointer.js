@@ -1,4 +1,4 @@
 export default (slide) => {
-    return `<a href='#slide-${slide.id}' class='point' title='Move to slide ${slide.pointNum}'>${slide.pointNum}</a>`;
+    return `<label for='slide-${slide.id}' title='Move to slide ${slide.pointNum}'>${slide.pointNum}</label>`;
 }
 

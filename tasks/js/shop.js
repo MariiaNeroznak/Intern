@@ -1,75 +1,38 @@
-'use strict';
-
+import { Component } from './component.js';
 import getTemplateItem from '../templates/shopItem.js';
 
-export class Shop {
+export class Shop extends Component {
     constructor(loader) {
-        this.wrapper = document.getElementById('shop');
-
-        this.counter = 0;
-        
-        this.loader = loader;
-        this.fillShop();
+        super(loader, 'shop');
     }
 
-    async loadData(id) {
-        let blockName = 'shop';
-        if (!id) blockName += '';
-        else blockName += '/' + +id;
-
-        const data = await this.loader.loadAndParseBlockData(blockName);
-        if (!data) return;  
-        
-        return data;
+    _createMainDOM(positionPoint) {
+        if (!positionPoint) return;
+        this._wrapper = document.createElement('div');
+        this._wrapper.id = this._blockName;
+        this._wrapper.classList.add('blocks');
+        positionPoint.append(this._wrapper);
     }
 
-    async fillShop() {
-        let data = await this.loadData();
+    _checkItemData(item) {
+        item.counter = ++this.counter; // "id": 1,
 
-        for (let item of data) {
-            this.addShopItemToDOM(item);
-        }
+        if (!item.alt) item.alt = ''; // "alt": "Description of image",
+        if (!item.img) item.hideImg = true; // "img": "https://picsum.photos/id/20/500/900",
+
+        if (!item.name) item.name = ''; // "name": "Lead text",
+        if (!item.description) item.description = ''; // "description": "Lorem ipsum dolor sit amet.",
+
+        if (!item.link) item.link = ''; // "link": "other.html",
+        if (!item.linkText) item.linkText = 'click me'; // "linkText": "and link",
+        if (!item.linkView || item.linkView !== 'btn') item.linkView = ''; // "linkView": "btn",
+
+        if (!item.space) item.space = 0; // "space": "3",
     }
 
-    addShopItemToDOM(itemData) {
-        const htmlObj = this.fillTemplates(itemData);
-        if (!htmlObj) return;
-
-        this.wrapper.insertAdjacentHTML('beforeend', htmlObj.item);
-    }
-
-    fillTemplates(item) {
-        if (!this.checkData(item)) return null;
-
+    _showItem(item) {
+        if (!item) return;
         const htmlItem = getTemplateItem(item);
-
-        return {item: htmlItem};
-    }
-
-    checkData(item) {
-        // "id": 1,
-        item.counter = ++this.counter;
-
-        // "alt": "Description of image",
-        if (!item.alt) item.alt = '';
-        // "img": "https://picsum.photos/id/20/500/900",
-        if (!item.img) item.hideImg = true;
-
-        // "name": "Lead text",
-        if (!item.name) item.name = '';
-        // "description": "Lorem ipsum dolor sit amet.",
-        if (!item.description) item.description = '';
-
-        // "link": "other.html",
-        if (!item.link) item.link = '';
-        // "linkText": "and link",
-        if (!item.linkText) item.linkText = 'click me';
-        // "linkView": "btn",
-        if (!item.linkView || item.linkView !== 'btn') item.linkView = '';
-
-        // "space": "3",
-        if (!item.space) item.space = 0;
-        
-        return item;
+        this._wrapper.insertAdjacentHTML('beforeend', htmlItem);
     }
 }

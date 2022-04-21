@@ -21,6 +21,18 @@
   "carousel": [
     {
       "id": "test",
+      "theme": "dark",
+      "lead": "BIG BANG",
+      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      "link": "https://app.simoona.com/",
+      "linkView": "btn",
+      "xPosition": "x-center",
+      "yPosition": "y-center",
+      "textAlign": "text-center",
+      "linkSpace": "3"
+    },
+    {
+      "id": "testx",
       "lead": "BIG BANG",
       "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
       "link": "https://app.simoona.com/",
@@ -146,6 +158,17 @@
       "textAlign": "text-center",
       "linkTitle": "",
       "space": "3"
+    },
+    {
+      "id": 8,
+      "lead": "BIG BANG",
+      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      "link": "https://app.simoona.com/",
+      "linkView": "btn",
+      "xPosition": "x-center",
+      "yPosition": "y-center",
+      "textAlign": "text-center",
+      "linkSpace": "3"
     }
   ],
   "shop": [

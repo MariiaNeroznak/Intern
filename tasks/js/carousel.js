@@ -1,89 +1,46 @@
-'use strict';
-
+import { Component } from './component.js';
 import getTemplateSlide from '../templates/carouselSlide.js';
 import getTemplatePointer from '../templates/carouselPointer.js';
 
-export class Carousel {
+export class Carousel extends Component {
     constructor(loader) {
-        this.wrapper = document.getElementById('carousel');
-        this.slides = this.wrapper.querySelector('.carousel-slides');
-        this.pointers = this.wrapper.querySelector('.carousel-pointers');
-
-        this.counter = 0;
-        
-        this.loader = loader;
-        this.fillCarousel();
-
-        // this.addEventNotMoveUp();
+        super(loader, 'carousel');
+        this._counter = 0;
     }
 
-    async loadData(id) {
-        let blockName = 'carousel';
-        if (!id) blockName += '';
-        else blockName += '/' + +id;
-
-        const data = await this.loader.loadAndParseBlockData(blockName);
-        if (!data) return;  
-        
-        return data;
+    _createMainDOM(positionPoint) {
+        if (!positionPoint) return;
+        this._wrapper = document.createElement('div');
+        this._wrapper.id = this._blockName;
+        this._wrapper.classList.add('carousel');
+        this._slides = document.createElement('div');
+        this._slides.classList.add('carousel-slides');
+        this._pointers = document.createElement('div');
+        this._pointers.classList.add('carousel-pointers');
+        positionPoint.append(this._wrapper);
+        this._wrapper.append(this._slides);
+        this._wrapper.append(this._pointers);
     }
 
-    async fillCarousel() {
-        let data = await this.loadData();
+    _checkItemData(slide) {
+        slide.pointNum = ++this._counter; // "id": 1,
 
-        for (let item of data) {
-            this.addSlideToDOM(item);
-        }
-    }
+        if (!slide.theme || slide.theme !== 'dark') slide.theme = 'light'; // "theme": "bg-light" "bg-dark",
+        if (!slide.description) slide.description = ''; // "description": "Description of image",
+        if (!slide.img) slide.hideImg = true; // "img": "https://picsum.photos/id/20/500/900",
 
-    addSlideToDOM(slideData) {
-        const htmlObj = this.fillTemplates(slideData);
-        if (!htmlObj) return;
+        if (!slide.lead) slide.lead = ''; // "lead": "Lead text",
+        if (!slide.text) slide.text = ''; // "text": "Lorem ipsum dolor sit amet.",
 
-        this.slides.insertAdjacentHTML('beforeend', htmlObj.slide);
-        this.pointers.insertAdjacentHTML('beforeend', htmlObj.pointer)
-    }
-
-    fillTemplates(slide) {
-        if (!this.checkData(slide)) return null;
-
-        const htmlSlide = getTemplateSlide(slide);
-        const htmlPointer = getTemplatePointer(slide);
-
-        return {slide: htmlSlide, pointer: htmlPointer};
-    }
-
-    checkData(slide) {
-        // "id": 1,
-        slide.pointNum = ++this.counter;
-
-        // "theme": "bg-light" "bg-dark",
-        if (!slide.theme || slide.theme !== 'dark') slide.theme = 'light';
-        // "description": "Description of image",
-        if (!slide.description) slide.description = '';
-        // "img": "https://picsum.photos/id/20/500/900",
-        if (!slide.img) slide.hideImg = true;
-
-        // "lead": "Lead text",
-        if (!slide.lead) slide.lead = '';
-        // "text": "Lorem ipsum dolor sit amet.",
-        if (!slide.text) slide.text = '';
-
-        // "link": "other.html",
-        if (!slide.link) slide.link = '';
-        // "linkText": "and link",
-        if (!slide.linkText) slide.linkText = 'click me';
-        // "linkView": "btn",
-        if (!slide.linkView || slide.linkView !== 'btn') slide.linkView = '';
-        // "linkTarget": "_blank",
-        slide.target = false;
+        if (!slide.link) slide.link = ''; // "link": "other.html",
+        if (!slide.linkText) slide.linkText = 'click me'; // "linkText": "and link",
+        if (!slide.linkView || slide.linkView !== 'btn') slide.linkView = ''; // "linkView": "btn",
+        slide.target = false; // "linkTarget": "_blank",
         if (slide?.linkTarget === '_blank') slide.target = true;
         else slide.target = false;
-        // "linkTitle": "Be careful the link opens new window",
-        if (!slide.linkTitle) slide.linkTitle = '';
+        if (!slide.linkTitle) slide.linkTitle = ''; // "linkTitle": "Be careful the link opens new window",
 
-        // "xPosition": "x-center" "x-right",
-        switch (slide.xPosition) {
+        switch (slide.xPosition) { // "xPosition": "x-center" "x-right",
             case 'x-right':
             case 'x-center':
                 break;
@@ -92,8 +49,7 @@ export class Carousel {
                 slide.xPosition = 'x-left';
                 break;
         }
-        // "yPosition": "y-center" "y-bottom" "y-top",
-        switch (slide.yPosition) {
+        switch (slide.yPosition) { // "yPosition": "y-center" "y-bottom" "y-top",
             case 'y-bottom':
             case 'y-center':
                 break;
@@ -102,8 +58,7 @@ export class Carousel {
                 slide.yPosition = 'y-top';
                 break;
         }
-        // "textAlign": "text-left" "text-center" "text-right",
-        switch (slide.textAlign) {
+        switch (slide.textAlign) { // "textAlign": "text-left" "text-center" "text-right",
             case 'text-right':
             case 'text-center':
                 break;
@@ -113,29 +68,25 @@ export class Carousel {
                 break;
         }
 
-        // "space": "3",
-        if (!slide.space) slide.space = 0;
-        // "linkSpace": "1" 1 - 4,
-        if (!slide.linkSpace) slide.linkSpace = 0;
-        return slide;
+        if (!slide.space) slide.space = 0; // "space": "3",
+        if (!slide.linkSpace) slide.linkSpace = 0; // "linkSpace": "1" 1 - 4,
     }
 
-    addEventNotMoveUp() {
-        console.log("addEventNotMoveUp");
-        document.addEventListener('click', function (event) {
-            console.clear();
-            if (!event.target) return;
-            const target = event.target.closest('.carousel-pointers a.point');
-            if (!target) return;
-            console.log(target);
-            console.log(this);
-            // event.preventDefault();
+    _addAdditionalData(item, index, data) {
+        item.prev = {};
+        if (index > 0) item.prev.id = data[index - 1].id;
+        else item.prev.id = data[data.length - 1].id;
+        
+        item.next = {};
+        if (index === (data.length - 1)) item.next.id = data[0].id;
+        else item.next.id = data[index + 1].id;
+    }
 
-        });
-        window.addEventListener('scroll', (event) => {
-            console.log("scroll");
-            console.log(event);
-            console.log(this);
-        });
+    _showItem(item) {
+        if (!item) return;
+        const htmlSlide = getTemplateSlide(item);
+        const htmlPointer = getTemplatePointer(item);
+        this._slides.insertAdjacentHTML('beforeend', htmlSlide);
+        this._pointers.insertAdjacentHTML('beforeend', htmlPointer);
     }
 }

@@ -5,24 +5,22 @@ import { Menu } from './menu.js';
 import { Carousel } from './carousel.js';
 import { Shop } from './shop.js';
 
-
 async function doAfterLoadDOM(event) {
-    try {
-        const loader = new Loader('http://localhost:3001');
+  try {
+    const loader = new Loader('http://localhost:3001');
 
-        const content = document.getElementById('content');
-        const header = document.querySelector('header');
+    const content = document.getElementById('content');
+    const header = document.querySelector('header');
 
-        const menu = new Menu(loader);
-        menu.render(header);
+    const menu = new Menu(loader);
+    menu.render(header);
 
-        // const carousel = new Carousel(loader);
-        const shop = new Shop(loader);
-        // carousel.render(content);
-        shop.render(content);
-
-    } catch (error) {
-        console.error('Common error: ', error);
-    }
+    const carousel = new Carousel(loader);
+    const shop = new Shop(loader);
+    // carousel.render(content);
+    shop.render(content);
+  } catch (error) {
+    console.error('Common error: ', error);
+  }
 }
 document.addEventListener('DOMContentLoaded', doAfterLoadDOM);

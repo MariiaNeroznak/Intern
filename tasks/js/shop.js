@@ -6,7 +6,6 @@ import getTemplateAdditions from '../templates/shopAdditions.js';
 export class Shop extends Component {
   constructor(loader) {
     super(loader, 'shop');
-    // this._productList = new ProductList();
   }
 
   _createMainDOM(positionPoint) {
@@ -36,17 +35,11 @@ export class Shop extends Component {
   _showItem(item) {
     if (!item) return;
     const htmlItem = getTemplateItem(item);
-    // this._productList.add(item);
     this._wrapper.insertAdjacentHTML('beforeend', htmlItem);
   }
 
   _beforeItemsLoad() {
-    // _afterItemsLoad() {
     const htmlEditor = getTemplateAdditions();
     this._wrapper.insertAdjacentHTML('beforeend', htmlEditor);
-  }
-
-  _afterItemsLoad() {
-    // document.addEventListener('click', Shop.remove);
   }
 }

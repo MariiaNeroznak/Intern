@@ -57,6 +57,9 @@
 
   --slider-pointer-height: 30px;
   --slider-pointer-mark-height: 3px;
+
+  --size-editor: 30;
+  --size-editor-with-px: calc(var(--size-editor) * 1px);
 }
 
 /* common settings */
@@ -76,6 +79,7 @@ body {
   padding: var(--default-paddings);
   font-size: 1rem;
   flex: 1 0 auto;
+  margin-top: 2rem;
 }
 
 a {
@@ -432,14 +436,19 @@ a.stretched-link::after {
 .blocks {
   display: flex;
   flex-flow: row wrap;
-  gap: 0;
+  gap: 2rem 0;
   margin-bottom: var(--section-padding);
 }
 
 .blocks .block-item {
-  flex: 1 0 100%;
-  padding: var(--default-paddings);
-  /* position: relative; just find them  */
+  flex: 1 0 80%;
+  max-width: 80%;
+  margin: 0 auto;
+  border: 1px solid transparent;
+  padding: 2rem;
+}
+.blocks .block-item:hover {
+  border-color: var(--primary-color);
 }
 
 .block-item .img-fluid {
@@ -450,7 +459,7 @@ a.stretched-link::after {
   display: block;
   margin: 0 auto;
   
-  border-radius: 8px;
+  border-radius: 0;
   filter: blur(2px) grayscale(1) brightness(80%);
   transform: scale(1);
 
@@ -468,30 +477,78 @@ a.stretched-link::after {
 }
 
 .block-item h2 {
-  position: absolute;
-  top: 50px;
-  left: 0;
-  right: 0;
   text-align: center;
   font-weight: 500;
-  color: var(--text-color-light);
+  color: var(--primary-color);
   font-size: 1.2rem;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  padding-left: var(--default-padding-x);
-  padding-right: var(--default-padding-x);
+  padding-left: calc(var(--default-padding-x)*3);
+  padding-right: calc(var(--default-padding-x)*3);
   transition: all .7s;
   opacity: 1;
 }
 
 .block-item:hover h2 {
-  opacity: 0;
+  position: relative;
+  text-align: left;
+  padding: 0;
 }
 
 .block-item p {
   font-size: .8rem;
   margin-bottom: var(--default-padding-y);
+}
+
+.blocks .block-item .editor,
+.blocks .block-item .remover {
+  position: absolute;
+  height: var(--size-editor-with-px);
+  width: 0;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  transition: all .3s;
+  overflow: hidden;
+  text-align: center;
+  font-family: var(--control-font-family);
+  color: var(--primary-btn-text-color);
+  font-weight: normal;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.blocks .block-item .remover {
+  top: var(--size-editor-with-px);
+}
+
+.blocks .block-item:hover .editor,
+.blocks .block-item:focus .editor,
+.blocks .block-item:hover .remover,
+.blocks .block-item:focus .remover {
+  height: var(--size-editor-with-px);
+  width: calc(var(--size-editor-with-px) * 2.4);
+  background-color: var(--primary-color);
+}
+
+.blocks .block-item .editor:hover,
+.blocks .block-item .remover:hover {
+  background-color: var(--primary-btn-hover-color);
+  color: var(--primary-btn-hover-text-color);
+}
+
+.blocks .block-item.additor {
+  font-family: var(--control-font-family);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+.blocks .block-item.additor:hover .editor {
+  height: 100%;
+  width: 100%;
 }
 
 .space-0 {
@@ -551,11 +608,18 @@ a.stretched-link::after {
     align-self: center;
   }
 
-  .blocks .block-item {
-    flex: 1 0 50%;
-    max-width: 50%;
+  .blocks {
+    gap: 2rem 1%;
+    justify-content: space-between;
   }
-
+  
+  .blocks .block-item {
+    flex: 1 0 47%;
+    max-width: 47%;
+    align-items: stretch;
+    margin: 0;
+  }
+ 
   .carousel {
     max-width: 80%;
   }
@@ -575,9 +639,14 @@ a.stretched-link::after {
     max-width: 1200px;
   }
 
+  .blocks {
+    justify-content: flex-start;
+    gap: 2rem 2%;
+  }
+
   .blocks .block-item {
-    flex: 1 0 25%;
-    max-width: 25%;
+    flex: 1 0 23%;
+    max-width: 23%;
   }
 
   .carousel-slide-description h2 {

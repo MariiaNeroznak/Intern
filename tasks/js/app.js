@@ -16,9 +16,9 @@ async function doAfterLoadDOM(event) {
         const menu = new Menu(loader);
         menu.render(header);
 
-        const carousel = new Carousel(loader);
+        // const carousel = new Carousel(loader);
         const shop = new Shop(loader);
-        carousel.render(content);
+        // carousel.render(content);
         shop.render(content);
 
     } catch (error) {

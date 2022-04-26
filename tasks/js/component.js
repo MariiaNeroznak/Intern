@@ -48,11 +48,15 @@ export class Component {
     async _checkAndShowItems(data) {
         if (!data) throw new Error('Component data is wrong.');
 
+        this._beforeItemsLoad();
+
         data.forEach((item, index, data) => {
             this._checkItemData(item);
             this._addAdditionalData(item, index, data);
             this._showItem(item);
         });
+
+        this._afterItemsLoad();
 
         this._removeLoader();
     }
@@ -62,4 +66,7 @@ export class Component {
     _addAdditionalData(item, index, data) {}
 
     _showItem(item) {}
+
+    _beforeItemsLoad() {}
+    _afterItemsLoad() {}
 }

@@ -8,7 +8,10 @@
   },
   "type": "module",
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "livereload": "livereload",
+    "http-server": "http-server ./tasks -c-1",
+    "json-server": "json-server --watch server/server.json --port 3001"
   },
   "repository": {
     "type": "git",

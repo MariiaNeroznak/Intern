@@ -1,72 +1,72 @@
 export class Component {
-    constructor(loader, blockName) {
-        if (!blockName) throw new Error('Can not create an empty component');
-        this._blockName = blockName;
-        this._loader = loader;
+  constructor(loader, blockName) {
+    if (!blockName) throw new Error('Can not create an empty component');
+    this._blockName = blockName;
+    this._loader = loader;
+  }
+
+  render(positionPoint) {
+    try {
+      this._createMainDOM(positionPoint);
+      this._showLoader();
+      this._loadData().then((data) => this._checkAndShowItems(data));
+    } catch (error) {
+      this._showError();
     }
+  }
 
-    render(positionPoint) {
-        try {
-            this._createMainDOM(positionPoint);
-            this._showLoader();
-            this._loadData()
-            .then(data => this._checkAndShowItems(data))
-        } catch(error) {
-            this._showError();
-        }
-    }
+  _createMainDOM(positionPoint) {
+    if (!positionPoint) return;
+    this._wrapper = document.createElement('div');
+    this._wrapper.id = this._blockName;
+    positionPoint.append(this._wrapper);
+  }
 
-    _createMainDOM(positionPoint) {
-        if (!positionPoint) return;
-        this._wrapper = document.createElement('div');
-        this._wrapper.id = this._blockName;
-        positionPoint.append(this._wrapper);
-    }
+  _showLoader() {
+    this._messages = document.createElement('div');
+    this._messages.innerHTML = `<div class='loader'>Load ${this._blockName}...</div>`;
+    this._wrapper.append(this._messages);
+  }
 
-    _showLoader() {
-        this._messages = document.createElement('div');
-        this._messages.innerHTML = `<div class='loader'>Load ${this._blockName}...</div>`;
-        this._wrapper.append(this._messages);
-    }
+  _removeLoader() {
+    this._messages.remove();
+  }
 
-    _removeLoader() {
-        this._messages.remove();
-    }
+  _showError() {
+    this._messages.innerHTML = 'Opps, something wrong';
+  }
 
-    _showError() {
-        this._messages.innerHTML = 'Opps, something wrong';
-    }
+  async _loadData(id) {
+    let blockName = this._blockName;
+    if (id) blockName += '/' + id;
 
-    async _loadData(id) {
-        let blockName = this._blockName;
-        if (id) blockName += '/' + id;
+    const data = await this._loader.loadAndParseBlockData(blockName);
 
-        const data = await this._loader.loadAndParseBlockData(blockName);
-        return data;
-    }
+    return data;
+  }
 
-    async _checkAndShowItems(data) {
-        if (!data) throw new Error('Component data is wrong.');
+  async _checkAndShowItems(data) {
+    if (!data) throw new Error('Component data is wrong.');
 
-        this._beforeItemsLoad();
+    this._beforeItemsLoad();
 
-        data.forEach((item, index, data) => {
-            this._checkItemData(item);
-            this._addAdditionalData(item, index, data);
-            this._showItem(item);
-        });
+    data.forEach((item, index, data) => {
+      this._checkItemData(item);
+      this._addAdditionalData(item, index, data);
+      this._showItem(item);
+    });
 
-        this._afterItemsLoad();
+    this._afterItemsLoad();
 
-        this._removeLoader();
-    }
-    
-    _checkItemData(item) {}
+    this._removeLoader();
+  }
 
-    _addAdditionalData(item, index, data) {}
+  _checkItemData(item) {}
 
-    _showItem(item) {}
+  _addAdditionalData(item, index, data) {}
 
-    _beforeItemsLoad() {}
-    _afterItemsLoad() {}
+  _showItem(item) {}
+
+  _beforeItemsLoad() {}
+  _afterItemsLoad() {}
 }

@@ -24,3 +24,10 @@ async function doAfterLoadDOM(event) {
   }
 }
 document.addEventListener('DOMContentLoaded', doAfterLoadDOM);
+
+function removeItem(event, id) {
+  let parent = event.target.closest('.block-item');
+  if (!parent) return;
+  parent.remove();
+}
+window.removeItem = removeItem;

@@ -1,4 +1,5 @@
 export default (slide) => {
+    if (!item) return;
     return `<div class='bg-${slide.theme}'>
                 <input type='radio' id='slide-${slide.id}' class='slide-item' name='slider'>
                 ${(slide.hideImg ? ''  : 

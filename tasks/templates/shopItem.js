@@ -8,7 +8,9 @@ export default (item) => {
                 <p class='space-${item.space}'>${item.description}</p>
                 ${
                   item.link
-                    ? `<a href='${item.link}' class='stretched-link ${item.linkView}'>${item.linkText}</a>`
+                    ? `<a href='${item.link}' class='stretched-link ${
+                        item.linkView === 'on' ? 'btn' : ''
+                      }'>${item.linkText}</a>`
                     : ''
                 }
             </div>`;

@@ -12,8 +12,8 @@ async function doAfterLoadDOM(event) {
     const content = document.getElementById('content');
     const header = document.querySelector('header');
 
-    const menu = new Menu(loader);
-    menu.render(header);
+    // const menu = new Menu(loader);
+    // menu.render(header);
 
     const carousel = new Carousel(loader);
     const shop = new Shop(loader);

@@ -60,6 +60,15 @@
 
   --size-editor: 30;
   --size-editor-with-px: calc(var(--size-editor) * 1px);
+
+  --input-border-color: var(--color-gunmetal);
+  --input-hover-border-color: var(--color-burnt-sienna);
+
+  --search-form-color: var(--color-dark-sky-blue);
+  --search-hover-form-color: var(--color-bfazzled-blue);
+
+  --form-marge-vertical: .5rem;
+  --form-marge-horizontal: 1rem;
 }
 
 /* common settings */
@@ -144,29 +153,29 @@ header {
 
 .search input[type="text"] {
   border-radius: 0;
-  border: 1px solid var(--dark-bg-color);
+  border: 1px solid var(--search-form-color);
   padding-left: var(--default-padding-x);
   padding-right: var(--default-padding-x);
 }
 
 .search input[type="text"]:focus {
   border-radius: 0;
-  border: 1px solid var(--dark-bg-color);
+  border-color: var(--search-hover-form-color);
   outline: 0;
 }
 
 .search input[type="button"] {
   color: var(--primary-bg-color);
   border: 0;
-  background: var(--dark-bg-color);
+  background: var(--search-form-color);
   padding: var(--default-paddings);
   border-radius: 0;
-  opacity: 0.8;
-  transition: opacity var(--default-trs-time);
+  transition: color var(--default-trs-time);
 }
 
-.search input[type="button"]:hover {
-  opacity: 1;
+.search input[type="button"]:hover,
+.search input[type="button"]:focus {
+  background: var(--search-hover-form-color);
 }
 
 .singin {
@@ -196,6 +205,8 @@ footer {
   display: none;
 }
 
+.modal .close,
+input.btn,
 a.btn {
   display: inline-block;
   padding: var(--btn-spacer);
@@ -205,8 +216,11 @@ a.btn {
   transition: all var(--default-trs-time);
   font-weight: bold;
   font-family: var(--control-font-family);
+  border: 0;
 }
 
+.modal .close:hover,
+input.btn:hover,
 a.btn:hover {
   background-color: var(--primary-btn-hover-color);
   color: var(--primary-btn-hover-text-color);
@@ -470,14 +484,9 @@ a.stretched-link::after {
 
 .block-item:hover .img-fluid {
   filter: blur(0) grayscale(0) brightness(1);
-  /* transform: scale(2); */
-  /* height: 300px; */
-  /* max-width: none; */
-  /* z-index: 100; */
 }
 
 .block-item h2 {
-  text-align: center;
   font-weight: 500;
   color: var(--primary-color);
   font-size: 1.2rem;
@@ -485,13 +494,12 @@ a.stretched-link::after {
   white-space: nowrap;
   overflow: hidden;
   padding-left: calc(var(--default-padding-x)*3);
-  padding-right: calc(var(--default-padding-x)*3);
   transition: all .7s;
   opacity: 1;
 }
 
 .block-item:hover h2 {
-  position: relative;
+  /* position: relative; */
   text-align: left;
   padding: 0;
 }
@@ -567,6 +575,100 @@ a.stretched-link::after {
   padding-top: var(--spacer-4);
 }
 
+.modal-wrapper {
+  position: fixed;
+  background: rgba(0, 0, 0, .2);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+.modal {
+  position: fixed;
+  top: 5rem;
+  bottom: 5rem;
+  left: 0;
+  right: 0;
+  min-width: 300px;
+  max-width: 80%;
+  margin: 0 auto;
+  background-color: white;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.modal .close {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  margin: 0;
+}
+
+.form {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  margin: var(--form-marge-vertical) 0;
+}
+
+.form > input,
+.form > textarea,
+.form > fieldset {
+  margin: var(--form-marge-vertical) var(--form-marge-horizontal);
+}
+
+.form > label {
+  margin: 0 var(--form-marge-horizontal);
+}
+
+.form input[type='text'],
+.form input[type='url'], 
+.form textarea,
+.form > label,
+.form fieldset {
+  display: block;
+}
+.form input[type='text'],
+.form input[type='url'], 
+.form input[type='range'],
+.form textarea,
+.form > label,
+.form fieldset {
+  min-width: 80%;
+  padding: 0.2rem;
+}
+
+.form fieldset > legend {
+  font-size: 0.8rem;
+}
+
+.form input[type='text'], 
+.form input[type='url'], 
+.form textarea {
+  border: 1px solid var(--input-border-color);
+  height: 2rem;
+  outline: 0 !important;
+}
+
+.form textarea {
+  height: 15rem;
+  resize: none;
+}
+
+.form input[type='text']:focus, 
+.form input[type='url']:focus, 
+.form textarea:focus {
+  border-color: var(--input-hover-border-color);
+}
+
+.form fieldset input[type='range'] {
+  width: 80%;
+}
 
 @media (min-width: 500px) {
   .block-item h2 {
@@ -656,5 +758,9 @@ a.stretched-link::after {
   .carousel-slide-description p,
   .carousel-slide-description a {
     font-size: 1rem;
+  }
+
+  .modal {
+    max-width: 70%;
   }
 }

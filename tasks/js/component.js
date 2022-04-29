@@ -5,11 +5,13 @@ export class Component {
     this._loader = loader;
   }
 
-  render(positionPoint) {
+  async render(positionPoint) {
     try {
       this._createMainDOM(positionPoint);
       this._showLoader();
-      this._loadData().then((data) => this._checkAndShowItems(data));
+      const data = await this._loadData();
+      if (!data) throw new Error('Loading error');
+      this._checkAndShowItems(data);
     } catch (error) {
       this._showError();
     }
@@ -40,7 +42,8 @@ export class Component {
     let blockName = this._blockName;
     if (id) blockName += '/' + id;
 
-    const data = await this._loader.loadAndParseBlockData(blockName);
+    const data = await this._loader.readAll(blockName);
+    // console.log(data);
 
     return data;
   }
@@ -53,7 +56,7 @@ export class Component {
     data.forEach((item, index, data) => {
       this._checkItemData(item);
       this._addAdditionalData(item, index, data);
-      this._showItem(item);
+      this._insertNewItemView(item);
     });
 
     this._afterItemsLoad();
@@ -62,11 +65,30 @@ export class Component {
   }
 
   _checkItemData(item) {}
-
   _addAdditionalData(item, index, data) {}
-
-  _showItem(item) {}
+  _insertNewItemView(item) {}
 
   _beforeItemsLoad() {}
-  _afterItemsLoad() {}
+  _afterItemsLoad() {
+    // this._additor = document.createElement('div');
+    // this._additor.classList.add('additor');
+    // this._additor.dataset.action = 'add';
+    // this._wrapper.insertAdjacentHTML('beforeend', this._additor);
+  }
+
+  _initItemData() {}
+  // JSON.stringify(data)
+
+  _addItemOnServer(data) {
+    return this._loader.create(this._blockName, data);
+  }
+  _editItemOnServer(id, data) {
+    if (!id) return false;
+    return this._loader.edit(this._blockName, id, data);
+  }
+
+  async _removeItemOnServer(id) {
+    if (!id) return false;
+    return this._loader.remove(this._blockName, id);
+  }
 }

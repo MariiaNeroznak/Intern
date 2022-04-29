@@ -42,13 +42,13 @@ export class Shop extends Component {
   }
   _editItemView(item) {
     // item
-    console.log(item);
+    // console.log(item);
     if (!item) return;
     const elem = document.querySelector(
       '.block-item[data-id="' + item.id + '"]'
     );
 
-    console.log(elem);
+    // console.log(elem);
     let name = elem.querySelector('h2');
     if (!name) {
       name = document.createElement('h2');
@@ -146,7 +146,7 @@ export class Shop extends Component {
       let dataFromForm = new FormData(target);
       let data = {};
       for (let i of dataFromForm) {
-        console.log(i[0] + ': ' + i[1]);
+        // console.log(i[0] + ': ' + i[1]);
         data[i[0]] = i[1];
       }
       const id = target.dataset.id;

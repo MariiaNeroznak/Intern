@@ -1,5 +1,7 @@
 {
-  "logo": {"text": "Logo"},
+  "logo": {
+    "text": "Logo"
+  },
   "menu": [
     {
       "link": "/",
@@ -172,14 +174,17 @@
     }
   ],
   "shop": [
-     {
-      "id": 1,
+    {
+      "name": "Long lead name will be here",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque placeat natus itaque dignissimos iure. Porro?",
       "title": "Some text about item",
       "img": "https://picsum.photos/id/1016/300/200",
       "alt": "Product",
-      "name": "Header name",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque placeat natus itaque dignissimos iure. Porro?",
-      "space": "3"
+      "space": "2",
+      "link": "https://picsum.photos/id/1016/300/200",
+      "linkText": "This is a button",
+      "linkView": "on",
+      "id": 1
     },
     {
       "id": 2,

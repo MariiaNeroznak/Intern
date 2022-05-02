@@ -21,7 +21,7 @@ export class Menu extends Component {
     if (!item.linkText) item.linkText = 'click me';
   }
 
-  _showItem(item) {
+  _insertNewItemView(item) {
     if (!item) return;
     const htmlItem = getTemplateItem(item);
     this._wrapper.insertAdjacentHTML('beforeend', htmlItem);

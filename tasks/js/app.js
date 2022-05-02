@@ -12,12 +12,13 @@ async function doAfterLoadDOM(event) {
     const content = document.getElementById('content');
     const header = document.querySelector('header');
 
-    // const menu = new Menu(loader);
-    // menu.render(header);
+    const menu = new Menu(loader);
+    menu.render(header);
 
     const carousel = new Carousel(loader);
+    carousel.render(content);
+
     const shop = new Shop(loader);
-    // carousel.render(content);
     shop.render(content);
   } catch (error) {
     console.error('Common error: ', error);

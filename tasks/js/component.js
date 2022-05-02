@@ -42,8 +42,7 @@ export class Component {
     let blockName = this._blockName;
     if (id) blockName += '/' + id;
 
-    const data = await this._loader.readAll(blockName);
-    // console.log(data);
+    const data = await this._loader.read(blockName);
 
     return data;
   }
@@ -69,19 +68,14 @@ export class Component {
   _insertNewItemView(item) {}
 
   _beforeItemsLoad() {}
-  _afterItemsLoad() {
-    // this._additor = document.createElement('div');
-    // this._additor.classList.add('additor');
-    // this._additor.dataset.action = 'add';
-    // this._wrapper.insertAdjacentHTML('beforeend', this._additor);
-  }
+  _afterItemsLoad() {}
 
   _initItemData() {}
-  // JSON.stringify(data)
 
   _addItemOnServer(data) {
     return this._loader.create(this._blockName, data);
   }
+
   _editItemOnServer(id, data) {
     if (!id) return false;
     return this._loader.edit(this._blockName, id, data);

@@ -2,6 +2,7 @@ export class Modal {
   constructor() {
     this.create();
   }
+
   create() {
     this._wrapper = document.createElement('div');
     this._closeBtn = document.createElement('a');
@@ -31,14 +32,17 @@ export class Modal {
       this.close();
     });
   }
+
   open(content) {
     if (!this._wrapper) this.create();
     if (content) this.insertContent(content);
     this._wrapper.classList.remove('hide');
   }
+
   close() {
     this._wrapper.classList.add('hide');
   }
+
   insertContent(content) {
     if (!content) return;
     this._content.innerHTML = '';

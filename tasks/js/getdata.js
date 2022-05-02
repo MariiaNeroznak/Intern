@@ -1,108 +1,56 @@
-export class TestMe {
-  tryMe() {
-    return 1;
-  }
-}
-
 export class Loader {
   constructor(sLink) {
     this._serverLink = sLink;
   }
 
-  readAll(blockName) {
-    return fetch(this._serverLink + '/' + blockName)
+  #makeRequest(link, requestHeaders) {
+    if (!requestHeaders) return;
+    return fetch(link, requestHeaders)
       .then((response) => {
         if (!response || !response.ok) return;
         return response.json();
       })
       .catch((err) => {
-        console.error(
-          'Loading or parsing error. ' + err.name + ': ' + err.message
-        );
-        return;
+        console.log('Request response error: ' + err.message);
       });
   }
 
   create(blockName, data) {
-    // post
-    return fetch(this._serverLink + '/' + blockName, {
+    const link = this._serverLink + '/' + blockName;
+    const requestHeaders = {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-      },
+      headers: { 'Content-Type': 'application/json;charset=utf-8' },
       body: JSON.stringify(data),
-    })
-      .then((response) => {
-        if (!response || !response.ok) return;
-        return response.json();
-      })
-      .catch((err) => {
-        console.log('POST response');
-      });
+    };
+    return this.#makeRequest(link, requestHeaders);
   }
 
   read(blockName, id) {
-    // get
-    return fetch(this._serverLink + '/' + blockName + (id ? '/' + id : ''))
-      .then((response) => {
-        if (!response || !response.ok) return;
-        return response.json();
-      })
-      .catch((err) => {
-        console.error(
-          'Loading or parsing error. ' + err.name + ': ' + err.message
-        );
-        return;
-      });
+    const link = this._serverLink + '/' + blockName + (id ? '/' + id : '');
+    const requestHeaders = {
+      method: 'GET',
+    };
+    return this.#makeRequest(link, requestHeaders);
   }
 
   edit(blockName, id, data) {
-    // put
     if (!id || !data) return;
-    if (id === -1) {
-      console.log('inserted');
-      return;
-    }
-    return fetch(this._serverLink + '/' + blockName + '/' + id, {
+    const link = this._serverLink + '/' + blockName + '/' + id;
+    const requestHeaders = {
       method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-      },
+      headers: { 'Content-Type': 'application/json;charset=utf-8' },
       body: JSON.stringify(data),
-    })
-      .then((response) => {
-        if (!response || !response.ok) return;
-        return response.json();
-      })
-      .catch((err) => {
-        console.log('PUT response');
-      });
-    // return fetch(this._serverLink + '/' + blockName + '/' + id)
-    //   .then((response) => {
-    //     console.log(response);
-    //   })
-    //   .catch((err) => {
-    //     console.error('Removing error on server' + err);
-    //     return;
-    //   });
-    console.log('edited');
+    };
+    return this.#makeRequest(link, requestHeaders);
   }
 
   remove(blockName, id) {
-    // delete
-    if (!id) return false;
-    if (!blockName) return false;
-    return fetch(this._serverLink + '/' + blockName + '/' + id, {
+    if (!id) return;
+    if (!blockName) return;
+    const link = this._serverLink + '/' + blockName + '/' + id;
+    const requestHeaders = {
       method: 'DELETE',
-    })
-      .then((response) => {
-        if (!response || !response.ok) return false;
-        // console.log(response);
-        // response.json().then((test) => console.log(test));
-        return true;
-      })
-      .catch((err) => {
-        return false;
-      });
+    };
+    return this.#makeRequest(link, requestHeaders);
   }
 }

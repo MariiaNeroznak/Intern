@@ -1,12 +1,13 @@
 import { Component } from './component.js';
 import getTemplateItem from '../templates/shopItem.js';
-import getTemplateAdditions from '../templates/shopAdditions.js';
+import getTemplateAdditor from '../templates/shopAdditions.js';
 import getTemplateItemForm from '../templates/shopItemForm.js';
 import { Modal } from './modal.js';
 
 export class Shop extends Component {
   static _counter = 15;
   static _imgId = 100;
+
   constructor(loader) {
     super(loader, 'shop');
   }
@@ -40,15 +41,13 @@ export class Shop extends Component {
     const htmlItem = getTemplateItem(item);
     this._wrapper.insertAdjacentHTML('beforeend', htmlItem);
   }
+
   _editItemView(item) {
-    // item
-    // console.log(item);
     if (!item) return;
     const elem = document.querySelector(
       '.block-item[data-id="' + item.id + '"]'
     );
 
-    // console.log(elem);
     let name = elem.querySelector('h2');
     if (!name) {
       name = document.createElement('h2');
@@ -72,7 +71,6 @@ export class Shop extends Component {
     }
 
     if (item.title) elem.title = item.title;
-    // if (item.id) // elem.dataset.id
     if (item.img) img.src = item.img;
     if (item.alt) img.alt = item.alt;
     if (item.name) name.innerText = item.name;
@@ -87,18 +85,18 @@ export class Shop extends Component {
       );
       description.classList.add('space-' + item.space);
     }
-    // elem.quertySelector('p').classList.remove('space-*').add('space-item.space)
     if (item.link) link.href = item.link;
     if (item.linkView === 'on') link.classList.add('btn');
     else link.classList.remove('btn');
     if (item.linkText) link.innerText = item.linkText;
   }
+
   _removeItemView(elementBlock) {
     elementBlock.remove();
   }
 
   _beforeItemsLoad() {
-    const htmlEditor = getTemplateAdditions();
+    const htmlEditor = getTemplateAdditor();
     this._wrapper.insertAdjacentHTML('beforeend', htmlEditor);
     this._addBlockLink = document.querySelector('.block-item.additor');
   }
@@ -129,9 +127,18 @@ export class Shop extends Component {
             data = await this._loadData(id);
             data.action = 'U';
           }
+          if (target.dataset.action === 'add') {
+            data = {
+              img:
+                'https://picsum.photos/id/' +
+                Shop._imgId +
+                '/' +
+                this.#getRandomInt(100, 800) +
+                '/' +
+                this.#getRandomInt(100, 800),
+            };
+          }
           this._showModal(data);
-          break;
-        default:
           break;
       }
     });
@@ -146,7 +153,6 @@ export class Shop extends Component {
       let dataFromForm = new FormData(target);
       let data = {};
       for (let i of dataFromForm) {
-        // console.log(i[0] + ': ' + i[1]);
         data[i[0]] = i[1];
       }
       const id = target.dataset.id;
@@ -155,13 +161,10 @@ export class Shop extends Component {
         item = await this._addItemOnServer(data);
       } else {
         data['id'] = id;
-        // console.log(data);
         item = await this._editItemOnServer(id, data);
       }
 
-      // console.log(item);
       if (!id) this._checkItemData(item);
-      // this._addAdditionalData(item, index, dataFromForm);
 
       if (id) this._editItemView(item);
       else this._insertNewItemView(item);
@@ -169,35 +172,19 @@ export class Shop extends Component {
   }
 
   _initItemData() {
-    this._counter++;
-    this._imgId++;
     super._initItemData();
+    Shop._counter++;
+    Shop._imgId++;
   }
 
   _addItemOnServer(data) {
-    // return {
-    //   id: Element._counter++,
-    //   title: 'Some text about item',
-    //   img:
-    //     'https://picsum.photos/id/' +
-    //     Product._imgId++ +
-    //     '/' +
-    //     this.#getRandomInt(100, 800) +
-    //     '/' +
-    //     this.#getRandomInt(100, 800),
-    //   alt: 'Product',
-    //   name: 'Header name',
-    //   description:
-    //     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque placeat natus itaque dignissimos iure. Porro?',
-    //   space: '3',
-    // };
     return super._addItemOnServer(data);
   }
 
   #getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+    return Math.floor(Math.random() * (max - min) + min);
   }
 
   _showModal(data) {

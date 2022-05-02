@@ -88,7 +88,7 @@ export class Carousel extends Component {
     else item.next.id = data[index + 1].id;
   }
 
-  _showItem(item) {
+  _insertNewItemView(item) {
     if (!item) return;
     const htmlSlide = getTemplateSlide(item);
     const htmlPointer = getTemplatePointer(item);

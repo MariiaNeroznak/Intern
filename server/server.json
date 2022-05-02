@@ -175,102 +175,85 @@
   ],
   "shop": [
     {
-      "name": "Long lead name will be here",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque placeat natus itaque dignissimos iure. Porro?",
-      "title": "Some text about item",
-      "img": "https://picsum.photos/id/1016/300/200",
-      "alt": "Product",
-      "space": "2",
-      "link": "https://picsum.photos/id/1016/300/200",
-      "linkText": "This is a button",
-      "linkView": "on",
-      "id": 1
-    },
-    {
-      "id": 2,
-      "title": "Some text about item",
-      "img": "https://picsum.photos/id/292/300/220",
-      "alt": "Product",
-      "name": "Sub header",
-      "description": "Eum eligendi non nihil inventore delectus iste enim laboriosam assumenda. Libero repellendus natus dignissimos! Hic.",
-      "link": "other.html",
-      "linkView": "btn",
-      "linkText": "A button",
-      "space": "4"
-    },
-    {
-      "id": 3,
-      "title": "Some text about item",
-      "img": "https://picsum.photos/id/599/300/180",
-      "alt": "Product",
-      "name": "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
-      "description": "Non, eius deserunt reiciendis sed mollitia minus at, veniam fuga laborum dolorevquia vel rerum!",
-      "link": "other.html",
-      "linkText": "stretched link"
-    },
-    {
-      "id": 4,
-      "title": "Some text about item",
-      "img": "https://picsum.photos/id/820/500/800",
-      "alt": "Product",
-      "name": "Lorem, ipsum.",
-      "description": "Ducimus temporibus laboriosam reprehenderit tempora! Voluptatum, omnis quasi quod doloribus ad eum recusandae fuga earum.",
-      "link": "other.html",
-      "linkView": "btn",
-      "linkText": "A button"
-    },
-    {
-      "id": 5,
-      "title": "Some text about item",
-      "img": "https://picsum.photos/id/658/400/180",
-      "alt": "Product",
-      "name": "Lorem ipsum dolor sit amet.",
-      "description": "Incidunt et ratione quaerat excepturi impedit tempora magni dolores aliquid, ullam, necessitatibus magnam voluptatem neque!",
-      "link": "other.html",
-      "linkView": "btn",
-      "linkText": "A button"
-    },
-    {
-      "id": 6,
-      "title": "Some text about item",
-      "img": "https://picsum.photos/id/571/300/480",
-      "alt": "Product",
-      "name": "Lorem ipsum dolor sit.",
-      "description": "Quibusdam, optio nisi rerum ut eius minima in repellendus alias est, libero, repellat fugiat?",
-      "link": "other.html",
-      "linkView": "btn",
-      "linkText": "A button"
-    },
-    {
-      "id": 7,
-      "title": "Some text about item",
-      "img": "https://picsum.photos/id/900/300/300",
-      "alt": "Product",
-      "name": "Lorem.",
-      "description": "Laboriosam, debitis. Nam perferendis impedit maiores architecto repudiandae temporibus earum. Aspernatur sequi deleniti officia ad.",
-      "link": "other.html",
-      "linkView": "btn",
-      "linkText": "A button"
-    },
-    {
-      "id": 8,
-      "img": "https://picsum.photos/id/72/350/300",
-      "alt": "Product",
       "name": "Lorem, ipsum.",
       "description": "Quam fuga sed, quae quasi tempora hic consequuntur sint odit libero asperiores recusandae amet similique!",
-      "link": "other.html",
-      "linkView": "btn",
-      "linkText": "A button"
+      "title": "",
+      "img": "https://picsum.photos/id/185/350/300",
+      "alt": "Product",
+      "space": "2",
+      "link": "http://localhost:8080/other.html",
+      "linkText": "A button",
+      "linkView": "on",
+      "id": 8
     },
     {
-      "id": 9,
-      "title": "Some text about item",
-      "img": "https://picsum.photos/id/639/300/350",
-      "alt": "Product",
-      "description": "Qui perferendis, pariatur facilis minus hic necessitatibus porro ea cum alias rem sed ipsa sapiente.",
-      "link": "other.html",
-      "linkView": "btn",
-      "linkText": "A button"
+      "name": "Test product 2",
+      "description": "",
+      "title": "",
+      "img": "https://picsum.photos/id/80/350/300",
+      "alt": "",
+      "space": "2",
+      "link": "https://picsum.photos/id/78/350/300",
+      "linkText": "button",
+      "linkView": "on",
+      "id": 10
+    },
+    {
+      "name": "Test product 2",
+      "description": "",
+      "title": "",
+      "img": "https://picsum.photos/id/73/350/300",
+      "alt": "",
+      "space": "2",
+      "link": "",
+      "linkText": "",
+      "id": 11
+    },
+    {
+      "name": "Test product 2",
+      "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis laudantium quasi maxime veritatis expedita labore ipsum, mollitia possimus odio saepe libero rem quo, illum cum obcaecati nisi sequi qui architecto. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis laudantium quasi maxime veritatis expedita labore ipsum, mollitia possimus odio saepe libero rem quo, illum cum obcaecati nisi sequi qui architecto.\nLorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis laudantium quasi maxime veritatis expedita labore ipsum, mollitia possimus odio saepe libero rem quo, illum cum obcaecati nisi sequi qui architecto.",
+      "title": "",
+      "img": "https://picsum.photos/id/1010/581/384",
+      "alt": "",
+      "space": "0",
+      "link": "",
+      "linkText": "read more",
+      "linkView": "on",
+      "id": 12
+    },
+    {
+      "name": "test product 3",
+      "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis laudantium quasi maxime veritatis expedita labore ipsum, mollitia possimus odio saepe libero rem quo, illum cum obcaecati nisi sequi qui architecto.",
+      "title": "",
+      "img": "https://picsum.photos/id/102/282/618",
+      "alt": "",
+      "space": "3",
+      "link": "",
+      "linkText": "",
+      "id": 13
+    },
+    {
+      "name": "test 4",
+      "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis laudantium quasi maxime veritatis expedita labore ipsum, mollitia possimus odio saepe libero rem quo, illum cum obcaecati nisi sequi qui architecto.",
+      "title": "",
+      "img": "https://picsum.photos/id/106/502/206",
+      "alt": "",
+      "space": "1",
+      "link": "",
+      "linkText": "button",
+      "linkView": "on",
+      "id": 14
+    },
+    {
+      "name": "product 2",
+      "description": "",
+      "title": "",
+      "img": "https://picsum.photos/id/104/428/489",
+      "alt": "",
+      "space": "2",
+      "link": "",
+      "linkText": "",
+      "id": 15
     }
   ]
 }

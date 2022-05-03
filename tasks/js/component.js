@@ -39,10 +39,7 @@ export class Component {
   }
 
   async _loadData(id) {
-    let blockName = this._blockName;
-    if (id) blockName += '/' + id;
-
-    const data = await this._loader.read(blockName);
+    const data = await this._loader.read(this._blockName, id);
 
     return data;
   }

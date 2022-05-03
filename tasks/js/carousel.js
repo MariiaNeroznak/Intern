@@ -23,59 +23,32 @@ export class Carousel extends Component {
   }
 
   _checkItemData(slide) {
-    slide.pointNum = ++this._counter; // "id": 1,
+    slide.pointNum = ++this._counter;
 
-    if (!slide.theme || slide.theme !== 'dark') slide.theme = 'light'; // "theme": "bg-light" "bg-dark",
-    if (!slide.description) slide.description = ''; // "description": "Description of image",
-    if (!slide.img) slide.hideImg = true; // "img": "https://picsum.photos/id/20/500/900",
+    if (!slide.theme || slide.theme !== 'dark') slide.theme = 'light';
+    if (!slide.description) slide.description = '';
+    if (!slide.img) slide.hideImg = true;
 
-    if (!slide.lead) slide.lead = ''; // "lead": "Lead text",
-    if (!slide.text) slide.text = ''; // "text": "Lorem ipsum dolor sit amet.",
+    if (!slide.lead) slide.lead = '';
+    if (!slide.text) slide.text = '';
 
-    if (!slide.link) slide.link = ''; // "link": "other.html",
-    if (!slide.linkText) slide.linkText = 'click me'; // "linkText": "and link",
-    if (!slide.linkView || slide.linkView !== 'btn') slide.linkView = ''; // "linkView": "btn",
-    slide.target = false; // "linkTarget": "_blank",
+    if (!slide.link) slide.link = '';
+    if (!slide.linkText) slide.linkText = 'click me';
+    if (!slide.linkView || slide.linkView !== 'btn') slide.linkView = '';
+    slide.target = false;
     if (slide?.linkTarget === '_blank') slide.target = true;
     else slide.target = false;
-    if (!slide.linkTitle) slide.linkTitle = ''; // "linkTitle": "Be careful the link opens new window",
+    if (!slide.linkTitle) slide.linkTitle = '';
 
-    switch (
-      slide.xPosition // "xPosition": "x-center" "x-right",
-    ) {
-      case 'x-right':
-      case 'x-center':
-        break;
-      case 'x-left':
-      default:
-        slide.xPosition = 'x-left';
-        break;
-    }
-    switch (
-      slide.yPosition // "yPosition": "y-center" "y-bottom" "y-top",
-    ) {
-      case 'y-bottom':
-      case 'y-center':
-        break;
-      case 'y-top':
-      default:
-        slide.yPosition = 'y-top';
-        break;
-    }
-    switch (
-      slide.textAlign // "textAlign": "text-left" "text-center" "text-right",
-    ) {
-      case 'text-right':
-      case 'text-center':
-        break;
-      case 'text-left':
-      default:
-        slide.textAlign = 'text-left';
-        break;
-    }
+    if (slide.xPosition !== 'x-right' && slide.xPosition !== 'x-center')
+      slide.xPosition = 'x-left';
+    if (slide.yPosition !== 'y-bottom' && slide.yPosition !== 'y-center')
+      slide.yPosition = 'y-top';
+    if (slide.textAlign !== 'text-right' && slide.textAlign !== 'text-center')
+      slide.textAlign = 'text-left';
 
-    if (!slide.space) slide.space = 0; // "space": "3",
-    if (!slide.linkSpace) slide.linkSpace = 0; // "linkSpace": "1" 1 - 4,
+    if (!slide.space) slide.space = 0;
+    if (!slide.linkSpace) slide.linkSpace = 0;
   }
 
   _addAdditionalData(item, index, data) {

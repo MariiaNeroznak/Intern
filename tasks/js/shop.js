@@ -21,19 +21,19 @@ export class Shop extends Component {
   }
 
   _checkItemData(item) {
-    item.counter = ++this.counter; // "id": 1,
+    item.counter = ++this.counter;
 
-    if (!item.alt) item.alt = ''; // "alt": "Description of image",
-    if (!item.img) item.hideImg = true; // "img": "https://picsum.photos/id/20/500/900",
+    if (!item.alt) item.alt = '';
+    if (!item.img) item.hideImg = true;
 
-    if (!item.name) item.name = ''; // "name": "Lead text",
-    if (!item.description) item.description = ''; // "description": "Lorem ipsum dolor sit amet.",
+    if (!item.name) item.name = '';
+    if (!item.description) item.description = '';
 
-    if (!item.link) item.link = ''; // "link": "other.html",
-    if (!item.linkText) item.linkText = 'click me'; // "linkText": "and link",
-    if (!item.linkView || item.linkView !== 'on') item.linkView = ''; // "linkView": "on",
+    if (!item.link) item.link = '';
+    if (!item.linkText) item.linkText = 'click me';
+    if (!item.linkView || item.linkView !== 'on') item.linkView = '';
 
-    if (!item.space) item.space = 0; // "space": "3",
+    if (!item.space) item.space = 0;
   }
 
   _insertNewItemView(item) {
@@ -42,33 +42,28 @@ export class Shop extends Component {
     this._wrapper.insertAdjacentHTML('beforeend', htmlItem);
   }
 
+  #createDOMElement(receiver, tag, classAdd) {
+    if (!receiver || !tag) return;
+    const selector = tag + (classAdd ? '.' + classAdd : '');
+    let elem = receiver.querySelector(selector);
+    if (!elem) {
+      elem = document.createElement(tag);
+      if (classAdd) elem.classList.add(classAdd);
+      receiver.append(elem);
+    }
+    return elem;
+  }
+
   _editItemView(item) {
     if (!item) return;
     const elem = document.querySelector(
       '.block-item[data-id="' + item.id + '"]'
     );
 
-    let name = elem.querySelector('h2');
-    if (!name) {
-      name = document.createElement('h2');
-      elem.append(name);
-    }
-    let img = elem.querySelector('img');
-    if (!img) {
-      img = document.createElement('img');
-      elem.append(img);
-    }
-    let description = elem.querySelector('p');
-    if (!description) {
-      description = document.createElement('p');
-      elem.append(description);
-    }
-    let link = elem.querySelector('a.stretched-link');
-    if (!link) {
-      link = document.createElement('a');
-      link.classList.add('stretched-link');
-      elem.append(link);
-    }
+    let name = this.#createDOMElement(elem, 'h2');
+    let img = this.#createDOMElement(elem, 'img');
+    let description = this.#createDOMElement(elem, 'p');
+    let link = this.#createDOMElement(elem, 'a', 'stretched-link');
 
     if (item.title) elem.title = item.title;
     if (item.img) img.src = item.img;
@@ -111,6 +106,8 @@ export class Shop extends Component {
       let elementBlock = target.closest('.block-item');
       if (!elementBlock) return;
 
+      event.preventDefault();
+
       this._initItemData();
 
       const id = elementBlock.dataset.id;
@@ -120,15 +117,16 @@ export class Shop extends Component {
             this._removeItemView(elementBlock);
           }
           break;
-        case 'add':
         case 'edit':
-          let data;
-          if (target.dataset.action === 'edit') {
-            data = await this._loadData(id);
+          {
+            let data = await this._loadData(id);
             data.action = 'U';
+            this._showModal(data);
           }
-          if (target.dataset.action === 'add') {
-            data = {
+          break;
+        case 'add':
+          {
+            let data = {
               img:
                 'https://picsum.photos/id/' +
                 Shop._imgId +
@@ -137,8 +135,8 @@ export class Shop extends Component {
                 '/' +
                 this.#getRandomInt(100, 800),
             };
+            this._showModal(data);
           }
-          this._showModal(data);
           break;
       }
     });
@@ -164,10 +162,10 @@ export class Shop extends Component {
         item = await this._editItemOnServer(id, data);
       }
 
-      if (!id) this._checkItemData(item);
-
-      if (id) this._editItemView(item);
-      else this._insertNewItemView(item);
+      if (id) {
+        this._checkItemData(item);
+        this._editItemView(item);
+      } else this._insertNewItemView(item);
     });
   }
 
